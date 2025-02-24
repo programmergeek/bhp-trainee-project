@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class PaticipantVitals(models.Model):
+class ParticipantVital(models.Model):
 
     participant_identifier = models.CharField(max_length=50)
     height = models.FloatField()
