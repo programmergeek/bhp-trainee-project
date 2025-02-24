@@ -3,8 +3,8 @@ from django.db import models
 
 class FinalQuestionnaire(models.Model):
 
-    CHOICES = (('unwilling', 'Unwilling'), ('moderatly_willing',
-               'Moderate Willing'), ('very_willing', 'Very Willing'))
+    CHOICES = (('unwilling', 'Unwilling'), ('moderatly',
+               'Moderate'), ('very', 'Very'))
 
     participant_identifier = models.CharField(max_length=50)
     participant_experience = models.CharField(max_length=500)
