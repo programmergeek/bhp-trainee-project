@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from .models.blood_samples_models import BloodSample
+from .models.vitals_model import ParticipantVital
 
 
 class BloodSampleModelTest(TestCase):
@@ -23,3 +24,13 @@ class BloodSampleModelTest(TestCase):
         past_sample = BloodSample(collection_date=date)
         self.assertIs(past_sample.collection_date <
                       timezone.now().date(), False)
+
+
+class VitalsModelTest(TestCase):
+
+    # participant weghts cannot be less than 0
+    def test_negative_weight(self):
+
+        test_weight = -234.0
+        test_vital = ParticipantVital(weight=test_weight)
+        self.assertIs(test_vital.weight < 0, False)
