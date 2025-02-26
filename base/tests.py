@@ -34,3 +34,9 @@ class VitalsModelTest(TestCase):
         test_weight = -234.0
         test_vital = ParticipantVital(weight=test_weight)
         self.assertIs(test_vital.weight < 0, False)
+
+    def test_weight_upper_limit(self):
+
+        test_weight = 9000
+        test_vital = ParticipantVital(weight=test_weight)
+        self.assertIs(test_vital.weight > 500.0, False)
