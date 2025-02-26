@@ -40,3 +40,12 @@ class VitalsModelTest(TestCase):
         test_weight = 9000
         test_vital = ParticipantVital(weight=test_weight)
         self.assertIs(test_vital.weight > 500.0, False)
+
+
+class MedicalHistoryTest(TestCase):
+
+    # medical events cannot happen in the future
+
+    #
+
+    pass
