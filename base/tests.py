@@ -5,6 +5,7 @@ from django.utils import timezone
 
 from .models.blood_samples_models import BloodSample
 from .models.vitals_model import ParticipantVital
+from .models.participant_medical_history_model import PreviousMedicalEvents, Medication, Doctor, Allergy, ParticipantMedicalHistory
 
 
 class BloodSampleModelTest(TestCase):
@@ -44,7 +45,89 @@ class VitalsModelTest(TestCase):
 
 class MedicalHistoryTest(TestCase):
 
+    # can you create a participant's medical history record
+    def test_medical_history_creation(self):
+        # create main medical history object
+        participant_medical_history = ParticipantMedicalHistory.objects.create(
+            participant_identifier='12345')
+
+        self.assertEqual(
+            participant_medical_history.participant_identifier, "12345")
+        self.assertEqual(ParticipantMedicalHistory.objects.count(), 1)
+
+    def test_create_doctor(self):
+
+        doctor = Doctor.objects.create(name='M. Samson')
+
+        self.assertIs(doctor.name, 'M. Samson')
+
+    def test_participant_medication_creation(self):
+
+        participant = ParticipantMedicalHistory.objects.create(
+            participant_identifier='P12345'
+        )
+
+        doctor = Doctor.objects.create(
+            name='M. Samson'
+        )
+
+        medication = Medication.objects.create(
+            participant_identifier=participant,
+            name='test drug',
+            prescribed_by=doctor
+        )
+
+        self.assertEqual(medication.name, 'test drug')
+        self.assertIs(medication.prescribed_by.name, doctor.name)
+
+    def test_create_participant_medical_event(self):
+
+        participant = ParticipantMedicalHistory.objects.create(
+            participant_identifier='12345')
+        doctor = Doctor.objects.create(name='M. Samson')
+
+        medical_event = PreviousMedicalEvents.objects.create(
+            name='Allergic reaction',
+            participant_identifier=participant,
+            description='Participant was exposed to peanuts during a meal, possibly from cross contamination, and suffered an acute alergic reaction.',
+            location='Gaborone',
+            hospital='Princess Marina Hospital',
+            doctor=doctor,
+            date=timezone.now().date()
+        )
+
+        self.assertIs(medical_event.name, 'Allergic reaction')
+
+    def test_create_multiple_medical_events(self):
+
+        pass
+
+    def test_create_allergy(self):
+
+        participant = ParticipantMedicalHistory.objects.create(
+            participant_identifier='12345')
+
+        allergy = Allergy.objects.create(
+            participant_identifier=participant,
+            reaction='test',
+            allergen='nuts'
+        )
+
+        self.assertIs(allergy.allergen, 'nuts')
+
+    def test_create_multiple_allergies(self):
+
+        pass
+
     # medical events cannot happen in the future
+
+    def test_medical_event_future_dating(self):
+
+        future_date = timezone.now() + datetime.timedelta(days=30)
+        medical_event = PreviousMedicalEvents(date=future_date)
+        self.assertIs(timezone.now() < medical_event.date, False)
+
+    # can you add an allergy
 
     #
 
