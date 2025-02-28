@@ -100,6 +100,28 @@ class MedicalHistoryTest(TestCase):
 
     def test_create_multiple_medical_events(self):
 
+        participant = ParticipantMedicalHistory.objects.create(
+            participant_identifier='12345')
+
+        doctor = Doctor.objects.create(name='M. Samson')
+
+        events = []
+
+        for i in range(5):
+
+            events.append(
+                PreviousMedicalEvents.objects.create(
+                    participant_identifier=participant,
+                    doctor=doctor,
+                    description='testing '+str(i),
+                    name=''+str(i),
+                    date=timezone.now(),
+                    hospital='Test hospital',
+                    location='Gaborone'
+                ))
+
+        self.assertEqual(PreviousMedicalEvents.objects.filter(
+            participant_identifier=participant).count(), 5)
         pass
 
     def test_create_allergy(self):
@@ -117,7 +139,21 @@ class MedicalHistoryTest(TestCase):
 
     def test_create_multiple_allergies(self):
 
-        pass
+        participant = ParticipantMedicalHistory.objects.create(
+            participant_identifier='12345')
+
+        allergies = []
+
+        for i in range(5):
+
+            allergies.append(Allergy.objects.create(
+                participant_identifier=participant,
+                allergen=str(i),
+                reaction=str(i)
+            ))
+
+        self.assertEqual(Allergy.objects.filter(
+            participant_identifier=participant).count(), 5)
 
     # medical events cannot happen in the future
 
@@ -126,9 +162,5 @@ class MedicalHistoryTest(TestCase):
         future_date = timezone.now() + datetime.timedelta(days=30)
         medical_event = PreviousMedicalEvents(date=future_date)
         self.assertIs(timezone.now() < medical_event.date, False)
-
-    # can you add an allergy
-
-    #
 
     pass
