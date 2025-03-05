@@ -26,7 +26,7 @@ SECRET_KEY = 'netxf-sf(e3iuu_(96cd!_#=)w2)f)6uv29*f)@j9efx+rp99*'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+APP_NAME = 'mock_study_subjects'
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mock_study_subjects.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
