@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
+# from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 
 from ..admin_site import mock_study_admin
 from ..forms.mock_study_subject_screening_form import SubjectScreeningForm

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from ..choices import YES_NO
+from ..screening_identifier import ScreeningIdentifier
+from ..eligibility import Eligibility
 
 
 class EnrollementManager(models.Model):
@@ -18,6 +20,9 @@ ENROLLMENT_SITES = (
 
 class SubjectScreening(models.Model):
 
+    identfier_cls = ScreeningIdentifier
+    eligibility_cls = Eligibility
+
     screening_identifier = models.CharField(
         max_length=36,
         verbose_name="Eligibility Identifier",
@@ -34,12 +39,16 @@ class SubjectScreening(models.Model):
         max_length=3,
         choices=YES_NO,
         verbose_name='Have they been diagnosed with hypertension?',
-        help_text="If 'Yes', then stop. Patient cannot be part of the study."
+        help_text="If 'No', then stop. Patient cannot be part of the study."
     )
 
     eligible = models.BooleanField(
         default=False,
         editable=False
+    )
+
+    age = models.IntegerField(
+        help_text='If the patient is not between the ages of 30 and 65, then stop, they cannot be part of the study.'
     )
 
     is_pregnant = models.CharField(
@@ -56,6 +65,21 @@ class SubjectScreening(models.Model):
         help_text="If 'Yes', then stop. The patient cannot be part of this study."
     )
 
+    has_allergies_to_drug = models.CharField(
+        max_length=3,
+        choices=YES_NO,
+        verbose_name="Does the patient have any known allergies to XYZ Drug?",
+        help_text="If 'Yes', then stop. The patient cannot be part of this study."
+    )
+
+    has_history_of_severe_cardiovascular_events = models.CharField(
+        max_length=3,
+        choices=YES_NO,
+        verbose_name="Does the patient have a history of sever cardiovascular events within the last 6 (six) months?",
+        help_text="If 'Yes', then stop. The patient cannot be part of this study."
+
+    )
+
     enrollment_site = models.CharField(
         max_length=100,
         null=True,
@@ -64,8 +88,12 @@ class SubjectScreening(models.Model):
     )
 
     def save(self, *args, **kwargs):
-
-        pass
+        eligibility_obj = self.eligibility_cls(
+            hypertension_status=self.has_hypertension)
+        self.eligible = eligibility_obj.eligible
+        if not self.id:
+            self.screening_identifier = self.identifier_cls().identifier
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.screening_identifier}'
