@@ -89,7 +89,13 @@ class SubjectScreening(models.Model):
 
     def save(self, *args, **kwargs):
         eligibility_obj = self.eligibility_cls(
-            hypertension_status=self.has_hypertension)
+            hypertension_status=self.has_hypertension,
+            has_history_of_severe_cardiovascular_events=self.has_history_of_severe_cardiovascular_events,
+            has_allergies_to_drug=self.has_allergies_to_drug,
+            is_breastfeeding=self.is_breastfeeding,
+            age=self.age,
+            is_pregnant=self.is_pregnant
+        )
         self.eligible = eligibility_obj.eligible
         if not self.id:
             self.screening_identifier = self.identifier_cls().identifier
