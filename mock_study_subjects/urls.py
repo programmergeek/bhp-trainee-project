@@ -21,5 +21,5 @@ from .admin.subject_screening_admin import mock_study_admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/', mock_study_admin.urls )
+    path('admin/', mock_study_admin.urls)
 ]

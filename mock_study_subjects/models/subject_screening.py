@@ -5,8 +5,11 @@ from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
 
 
-class EnrollementManager(models.Model):
-
+class EnrollmentManager(models.Model):
+    def get_by_natural_key(self, screening_identifier):
+        return self.get(
+            screening_identifier=screening_identifier
+        )
     pass
 
 
@@ -101,6 +104,8 @@ class SubjectScreening(models.Model):
             self.screening_identifier = self.identifier_cls().identifier
         super().save(*args, **kwargs)
 
+    objects = EnrollmentManager()
+
     def __str__(self):
         return f'{self.screening_identifier}'
 
@@ -109,6 +114,6 @@ class SubjectScreening(models.Model):
         return 'schedule'
 
     class Meta:
-        app_label = 'mock_study_subject'
+        app_label = 'mock_study_subjects'
         verbose_name = 'Mock Study Eligibility'
         verbose_name_plural = 'Mock Study Eligibility'
