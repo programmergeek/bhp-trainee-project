@@ -7,7 +7,7 @@ class CurrentSiteManager:
     pass
 
 
-class SubjectVisit:
+class SubjectVisit(models.Model):
 
     """A model completed by the user that captures the covering
     information for the data collected for this timepoint/appointment,
@@ -36,4 +36,7 @@ class SubjectVisit:
     on_site = CurrentSiteManager()
 
     class Meta:
+        app_label = 'mock_study_subjects'
+        verbose_name = 'Mock Study Subject Visit'
+        verbose_name_plural = 'Mock Study Subject Visit'
         pass

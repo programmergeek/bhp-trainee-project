@@ -19,3 +19,10 @@ GENDER = (
 )
 
 NOT_APPLICABLE = 'N/A'
+
+MISSED_VISIT = 'missed'
+SCHEDULED = 'scheduled'
+UNSCHEDULED = 'unscheduled'
+INVALID_ERROR = 'invalid'
+OTHER = 'OTHER'
+OFF_STUDY = 'off study'

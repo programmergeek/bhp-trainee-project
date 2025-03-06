@@ -20,16 +20,16 @@ class SubjectScreeningAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': {
+            'fields': [
                 'report_datetime',
                 'subject_identifier',
+                'age',
                 'has_hypertension',
                 'is_pregnant',
                 'is_breastfeeding',
                 'enrollment_site'
-            }
+            ]
         }),
-
     )
 
     search_fields = ('subject_identifier', )
