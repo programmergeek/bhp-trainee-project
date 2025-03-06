@@ -17,3 +17,5 @@ GENDER = (
     (MALE, _('Male')),
     (FEMALE, _('Female')),
 )
+
+NOT_APPLICABLE = 'N/A'
