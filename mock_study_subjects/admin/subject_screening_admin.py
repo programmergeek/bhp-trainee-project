@@ -21,7 +21,7 @@ class SubjectScreeningAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': {
-                'report_datetine',
+                'report_datetime',
                 'subject_identifier',
                 'has_hypertension',
                 'is_pregnant',
