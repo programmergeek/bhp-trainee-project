@@ -21,6 +21,10 @@ ENROLLMENT_SITES = (
 )
 
 
+"""TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
+"""
+
+
 class SubjectScreening(models.Model):
 
     identfier_cls = ScreeningIdentifier
