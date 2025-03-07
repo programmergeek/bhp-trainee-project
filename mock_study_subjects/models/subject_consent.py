@@ -9,53 +9,51 @@ class ConsentManager():
         return self.get(
             subject_identifier=subject_identifier, version=version)
 
+#
+# class UpdatesOrCreatesRegistrationModelMixin():
+#
+#     @property
+#     def registration_unique_field(self):
+#         return 'subject_identifier'
+#
+#     @property
+#     def registration_options(self):
+#         """Gathers values for common attributes between the
+#         registration model and this instance.
+#         """
+#         registration_options = {}
+#         for field in self.registration_model._meta.get_fields():
+#             if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
+#                     + [self.registration_unique_field]):
+#                 try:
+#                     registration_options.update({field.name: getattr(
+#                         self, field.name)})
+#                 except AttributeError:
+#                     pass
+#         return registration_options
+#
+#     def registration_raise_on_not_unique(self):
+#         """Asserts the field specified for update_or_create is unique.
+#         """
+#         unique_fields = ['registration_identifier']
+#         for f in self.registration_model._meta.get_fields():
+#             try:
+#                 if f.unique:
+#                     unique_fields.append(f.name)
+#             except AttributeError:
+#                 pass
+#         if self.registration_unique_field not in unique_fields:
+#             raise ImproperlyConfigured(
+#                 'Field is not unique. Got {}.{} -- {}'.format(
+#                     self._meta.label_lower, self.registration_unique_field))
+#
+#     class Meta:
+#         abstract = True
 
-class UpdatesOrCreatesRegistrationModelMixin():
 
-    @property
-    def registration_unique_field(self):
-        return 'subject_identifier'
-
-    @property
-    def registration_options(self):
-        """Gathers values for common attributes between the
-        registration model and this instance.
-        """
-        registration_options = {}
-        for field in self.registration_model._meta.get_fields():
-            if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
-                    + [self.registration_unique_field]):
-                try:
-                    registration_options.update({field.name: getattr(
-                        self, field.name)})
-                except AttributeError:
-                    pass
-        return registration_options
-
-    def registration_raise_on_not_unique(self):
-        """Asserts the field specified for update_or_create is unique.
-        """
-        unique_fields = ['registration_identifier']
-        for f in self.registration_model._meta.get_fields():
-            try:
-                if f.unique:
-                    unique_fields.append(f.name)
-            except AttributeError:
-                pass
-        if self.registration_unique_field not in unique_fields:
-            raise ImproperlyConfigured(
-                'Field is not unique. Got {}.{} -- {}'.format(
-                    self._meta.label_lower, self.registration_unique_field))
-
-    class Meta:
-        abstract = True
-
-
-class SubjectConsent(
-    UpdatesOrCreatesRegistrationModelMixin,
+class SubjectConsent(models.Model):
     """ A model completed by the user that captures the ICF.
-    """):
-
+    """
     subject_screening_model = 'mock_study_subjects.subject_screening'
 
     screening_identifier = models.CharField(
@@ -98,9 +96,6 @@ class SubjectConsent(
         """
         pass
 
-    class Meta():
-        app_label = 'mock_study_subject'
+    class Meta:
+        app_label = 'mock_study_subjects'
         get_latest_by = 'consent_datetime'
-        unique_together = (('subject_identifier', 'version'),
-                           ('first_name', 'dob', 'initials', 'version'))
-        ordering = ('-created',)

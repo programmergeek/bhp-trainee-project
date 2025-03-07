@@ -1,4 +1,4 @@
-from .constants import NOT_APPLICABLE, OFF_STUDY
+from .constants import NOT_APPLICABLE, OFF_STUDY, OTHER
 
 YES_NO = (('yes', "Yes"), ('no', 'No'))
 
@@ -27,4 +27,12 @@ VISIT_REASON = (
     ('Death', 'Death'),
     (OFF_STUDY, 'Off study'),
     ('deferred', 'Deferred'),
+)
+
+ID_TYPE = (
+    ('country_id', 'Country ID number'),
+    ('drivers', 'Driver\'s license'),
+    ('passport', 'Passport'),
+    ('country_id_rcpt', 'Country ID receipt'),
+    (OTHER, 'Other'),
 )
