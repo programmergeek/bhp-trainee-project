@@ -99,3 +99,5 @@ class SubjectConsent(models.Model):
     class Meta:
         app_label = 'mock_study_subjects'
         get_latest_by = 'consent_datetime'
+        verbose_name = 'Mock Study Consent'
+        verbose_name_plural = 'Mock Study Consent'
