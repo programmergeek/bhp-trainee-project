@@ -1,14 +1,10 @@
 from django.contrib.sites.models import Site
-from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
-from django_crypto_fields.fields import EncryptedCharField
 from ..choices import YES_NO
 
 
 class SubjectLocator(models.Model):
-
-    tracking_identifier_prefix = 'SL'
 
     site = models.ForeignKey(
         Site, on_delete=models.PROTECT, null=True, editable=False,
@@ -24,9 +20,6 @@ class SubjectLocator(models.Model):
         verbose_name=(
             "When you stay in the village, what clinic/health post do you normally go to?"),
         max_length=75,
-        validators=[RegexValidator(
-            regex=r'^[0-9]{2}[-][0-9]{1}[-][0-9]{2}$',
-            message='The correct clinic code format is XX-X-XX'), ],
         help_text="Please give clinic code.",
     )
     home_village = models.CharField(
@@ -44,7 +37,7 @@ class SubjectLocator(models.Model):
         help_text="",
     )
 
-    alt_contact_name = EncryptedCharField(
+    alt_contact_name = models.CharField(
         max_length=35,
         verbose_name="Full Name of the responsible person",
         help_text="include firstname and surname",
@@ -52,14 +45,14 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    alt_contact_rel = EncryptedCharField(
+    alt_contact_rel = models.CharField(
         max_length=35,
         verbose_name="Relationship to participant",
         blank=True,
         null=True,
         help_text="",
     )
-    alt_contact_cell = EncryptedCharField(
+    alt_contact_cell = models.CharField(
         max_length=8,
         verbose_name="Cell number",
         help_text="",
@@ -67,7 +60,7 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    other_alt_contact_cell = EncryptedCharField(
+    other_alt_contact_cell = models.CharField(
         max_length=8,
         verbose_name="Cell number (alternate)",
         help_text="",
@@ -75,7 +68,7 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    alt_contact_tel = EncryptedCharField(
+    alt_contact_tel = models.CharField(
         max_length=8,
         verbose_name="Telephone number",
         help_text="",
