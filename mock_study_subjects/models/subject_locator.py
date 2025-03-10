@@ -86,10 +86,6 @@ class SubjectLocator(models.Model):
     def __str__(self):
         return '{}'.format(self.subject_identifier)
 
-    def natural_key(self):
-        return (self.subject_identifier, )
-    natural_key.dependencies = ['sites.Site']
-
     class Meta:
         verbose_name = 'Subject Locator'
         verbose_name_plural = 'Subject Locator'

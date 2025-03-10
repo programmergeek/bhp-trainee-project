@@ -3,10 +3,6 @@ from ..choices import VISIT_INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
 from ..constants import NOT_APPLICABLE
 
 
-class CurrentSiteManager:
-    pass
-
-
 class SubjectVisit(models.Model):
 
     """A model completed by the user that captures the covering
@@ -32,8 +28,6 @@ class SubjectVisit(models.Model):
         verbose_name='What is the main source of this information?',
         max_length=40,
         choices=VISIT_INFO_SOURCE)
-
-    on_site = CurrentSiteManager()
 
     class Meta:
         app_label = 'mock_study_subjects'

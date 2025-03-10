@@ -5,14 +5,6 @@ from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
 
 
-class EnrollmentManager(models.Model):
-    def get_by_natural_key(self, screening_identifier):
-        return self.get(
-            screening_identifier=screening_identifier
-        )
-    pass
-
-
 """TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
 """
 
@@ -99,8 +91,6 @@ class SubjectScreening(models.Model):
         if not self.id:
             self.screening_identifier = self.identifier_cls().identifier
         super().save(*args, **kwargs)
-
-    objects = EnrollmentManager()
 
     def __str__(self):
         return f'{self.screening_identifier}'
