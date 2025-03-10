@@ -80,5 +80,6 @@ class SubjectLocator(models.Model):
         return '{}'.format(self.subject_identifier)
 
     class Meta:
+        app_label = 'mock_study_subjects'
         verbose_name = 'Subject Locator'
         verbose_name_plural = 'Subject Locator'
