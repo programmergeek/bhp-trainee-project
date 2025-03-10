@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from ..choices import YES_NO
+from ..choices import YES_NO, ENROLLMENT_SITES
 from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
 
@@ -11,14 +11,6 @@ class EnrollmentManager(models.Model):
             screening_identifier=screening_identifier
         )
     pass
-
-
-ENROLLMENT_SITES = (
-    ('gaborone_private_hospital', 'Gaborone Private Hospital (GPH)'),
-    ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
-    ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
-    ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
-)
 
 
 """TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
