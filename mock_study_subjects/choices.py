@@ -31,7 +31,7 @@ VISIT_REASON = (
 
 ID_TYPE = (
     ('country_id', 'Country ID number'),
-    ('drivers', 'Driver\'s license'),
+    ('drivers_licence', 'Driver\'s license'),
     ('passport', 'Passport'),
     ('country_id_rcpt', 'Country ID receipt'),
     (OTHER, 'Other'),

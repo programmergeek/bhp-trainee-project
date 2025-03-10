@@ -30,21 +30,11 @@ class SubjectConsent(models.Model):
         self.subject_type = 'subject'
         super().save(*args, **kwargs)
 
-    def natural_key(self):
-        return (self.subject_identifier, self.version,)
-
     def get_search_slug_fields(self):
         fields = super().get_search_slug_fields()
         fields.extend(['identity', 'screening_identifier',
                        'first_name', 'last_name'])
         return fields
-
-    def make_new_identifier(self):
-        """Returns a new and unique identifier.
-
-        Override this if needed.
-        """
-        pass
 
     class Meta:
         app_label = 'mock_study_subjects'
