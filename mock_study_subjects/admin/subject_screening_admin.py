@@ -2,15 +2,8 @@ from django.contrib import admin
 # from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 
 from ..admin_site import mock_study_admin
-from ..forms.mock_study_subject_screening_form import SubjectScreeningForm
+from ..forms.subject_screening_form import SubjectScreeningForm
 from ..models.subject_screening import SubjectScreening
-
-
-class ModelAdminMixin():
-
-    list_per_page = 10
-    date_hierarchy = 'modified'
-    empty_value_display = '-'
 
 
 @admin.register(SubjectScreening, site=mock_study_admin)
