@@ -22,7 +22,8 @@ class SubjectVitals(models.Model):
 
     weight = models.FloatField()
 
-    is_baseline = models.BooleanField()
+    is_baseline = models.BooleanField(
+        verbose_name='Is this the participant\'s baseline vitals measurement?')
 
     class Meta:
         app_label = "mock_study_subjects"
