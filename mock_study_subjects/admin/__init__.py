@@ -4,3 +4,4 @@ from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_vitals_admin import SubjectVitalsAdmin
 from .subject_blood_sample_admin import SubjectBloodSampleAdmin
+from .liver_panel_blood_test_admin import LiverPanelBloodTestAdmin
