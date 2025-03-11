@@ -3,3 +3,4 @@ from .subject_screening_admin import SubjectScreeningAdmin
 from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_vitals_admin import SubjectVitalsAdmin
+from .subject_blood_sample_admin import SubjectBloodSampleAdmin
