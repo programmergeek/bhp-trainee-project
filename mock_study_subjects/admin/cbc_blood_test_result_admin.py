@@ -12,6 +12,12 @@ class CBCBloodTestResultAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {
         'fields': [
-
+            'subject_identifier',
+            'sample_id',
+            'red_blood_cell_count',
+            'hemoglobin',
+            'hematocrit',
+            'white_blood_cell_count',
+            'platelet_count'
         ]
     }),)
