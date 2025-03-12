@@ -43,3 +43,5 @@ ENROLLMENT_SITES = (
     ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
     ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
 )
+
+SEVERITY = (('mild', 'Mild'), ('moderate', 'Moderate'), ('severe', 'Severe'))
