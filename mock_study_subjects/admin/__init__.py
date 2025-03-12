@@ -8,3 +8,4 @@ from .liver_panel_blood_test_admin import LiverPanelBloodTestAdmin
 from .cbc_blood_test_result_admin import CBCBloodTestResultAdmin
 from .adverse_event_admin import AdverseEventAdmin
 from .compliance_admin import ComplianceAdmin
+from .exit_interview_admin import ExitInterviewAdmin
