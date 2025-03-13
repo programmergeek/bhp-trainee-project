@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from ..choices import TESTING_SITES, TESTING_STATUS
 
 
 class CBCBloodTestResult(models.Model):
@@ -16,6 +18,12 @@ class CBCBloodTestResult(models.Model):
     white_blood_cell_count = models.FloatField()
 
     platelet_count = models.FloatField()
+
+    date_tested = models.DateField(default=timezone.now())
+
+    test_site = models.CharField(max_length=50, choices=TESTING_SITES)
+
+    testing_status = models.CharField(max_length=10, choices=TESTING_STATUS)
 
     class Meta:
         app_label = 'mock_study_subjects'

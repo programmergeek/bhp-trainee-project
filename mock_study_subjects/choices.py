@@ -45,3 +45,11 @@ ENROLLMENT_SITES = (
 )
 
 SEVERITY = (('mild', 'Mild'), ('moderate', 'Moderate'), ('severe', 'Severe'))
+
+TESTING_SITES = (
+    ('optimum_health_medical_laboratory', 'Optimum Health Mediacal Laboratory'),
+    ('diagnofirm_medical_laboratories', 'Diagnofirm Medical Laboratories'),
+    ('mmoloki_medical_laboratories', 'Mmoloki Medical Laboratories')
+)
+
+TESTING_STATUS = (('pending', 'Pending'), ('complete', 'Complete'))
