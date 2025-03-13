@@ -3,6 +3,8 @@ from django.utils import timezone
 from ..choices import YES_NO, ENROLLMENT_SITES
 from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
+import random
+from math import floor
 
 
 """TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
@@ -11,7 +13,7 @@ from ..eligibility import Eligibility
 
 class SubjectScreening(models.Model):
 
-    identfier_cls = ScreeningIdentifier
+    identifier_cls = ScreeningIdentifier
     eligibility_cls = Eligibility
 
     screening_identifier = models.CharField(
@@ -89,7 +91,7 @@ class SubjectScreening(models.Model):
         )
         self.eligible = eligibility_obj.eligible
         if not self.id:
-            self.screening_identifier = self.identifier_cls().identifier
+            self.screening_identifier = floor(random.random() * 100000)
         super().save(*args, **kwargs)
 
     def __str__(self):

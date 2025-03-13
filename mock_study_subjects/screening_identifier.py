@@ -5,4 +5,6 @@ from math import floor
 class ScreeningIdentifier:
 
     def __init__(self):
-        return floor(random() * 100000)
+        # return floor(random.random() * 100000)
+
+        return None
