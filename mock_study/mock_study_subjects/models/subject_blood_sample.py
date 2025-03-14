@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from ..choices import ENROLLMENT_SITES
+from ..choices import ENROLLMENT_SITES, TESTING_SITES, TESTING_STATUS, ANTICOAGULANTS
 
 
 class SubjectBloodSample(models.Model):
@@ -20,13 +20,13 @@ class SubjectBloodSample(models.Model):
 
     volume = models.FloatField()
 
-    anticoagulant = models.CharField(max_length=50)
+    anticoagulant = models.CharField(max_length=50, choices=ANTICOAGULANTS)
 
     tube_type = models.CharField(max_length=50)
 
-    storage_location = models.CharField(max_length=50)
+    storage_location = models.CharField(max_length=50, choices=TESTING_SITES)
 
-    status = models.CharField(max_length=20)
+    status = models.CharField(max_length=20, choices=TESTING_STATUS)
 
     class Meta:
         app_label = 'mock_study_subjects'

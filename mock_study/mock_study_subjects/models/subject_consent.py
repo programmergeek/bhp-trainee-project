@@ -1,11 +1,16 @@
 from ..constants import GENDER
-from django.core.exceptions import ImproperlyConfigured
 from django.db import models
+from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin
+
+"""
+NOTES: 
+
+ - UpdatesOrCreatesRegistrationModelMixin: handles registering a participant
+"""
 
 
 class SubjectConsent(models.Model):
-    """ A model completed by the user that captures the ICF.
-    """
+
     subject_screening_model = 'mock_study_subjects.subject_screening'
 
     screening_identifier = models.CharField(
@@ -29,12 +34,6 @@ class SubjectConsent(models.Model):
     def save(self, *args, **kwargs):
         self.subject_type = 'subject'
         super().save(*args, **kwargs)
-
-    def get_search_slug_fields(self):
-        fields = super().get_search_slug_fields()
-        fields.extend(['identity', 'screening_identifier',
-                       'first_name', 'last_name'])
-        return fields
 
     class Meta:
         app_label = 'mock_study_subjects'

@@ -53,3 +53,5 @@ TESTING_SITES = (
 )
 
 TESTING_STATUS = (('pending', 'Pending'), ('complete', 'Complete'))
+
+ANTICOAGULANTS = (('heparin', 'Heparin'), ('citrate', 'Citrate'))

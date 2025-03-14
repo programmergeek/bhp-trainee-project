@@ -26,7 +26,7 @@ SECRET_KEY = 'netxf-sf(e3iuu_(96cd!_#=)w2)f)6uv29*f)@j9efx+rp99*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 APP_NAME = 'mock_study_subjects'
 
 STUDY_OPEN_DATETIME = datetime.today()
@@ -34,7 +34,10 @@ STUDY_CLOSE_DATETIME = datetime.today()
 GENDER_OF_CONSENT = ['M', 'F']
 
 GIT_DIR = os.path.dirname(BASE_DIR)
+ETC_DIR = os.path.join(BASE_DIR, 'etc')
 
+# KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
+AUTO_CREATE_KEYS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crypto_fields.apps.AppConfig',
     'edc_base.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_device.apps.AppConfig',
+    'edc_registration.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 
