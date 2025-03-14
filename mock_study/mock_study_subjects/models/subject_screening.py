@@ -126,5 +126,5 @@ class SubjectScreening(UniqueSubjectIdentifierFieldMixin, BaseUuidModel):
 
     class Meta:
         app_label = 'mock_study_subjects'
-        verbose_name = 'Mock Study Eligibility'
-        verbose_name_plural = 'Mock Study Eligibility'
+        verbose_name = 'Mock Study Screening'
+        verbose_name_plural = 'Mock Study Screening'
