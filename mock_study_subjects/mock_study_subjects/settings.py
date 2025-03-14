@@ -33,6 +33,8 @@ STUDY_OPEN_DATETIME = datetime.today()
 STUDY_CLOSE_DATETIME = datetime.today()
 GENDER_OF_CONSENT = ['M', 'F']
 
+GIT_DIR = os.path.dirname(BASE_DIR)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'edc_base.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
+    'edc_device.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 

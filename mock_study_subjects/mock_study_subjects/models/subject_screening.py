@@ -118,7 +118,7 @@ class SubjectScreening(UniqueSubjectIdentifierFieldMixin, BaseUuidModel):
         )
         self.eligible = eligibility_obj.eligible
         if not self.id:
-            self.screening_identifier = floor(random.random() * 100000)
+            self.screening_identifier = self.identifier_cls().identifier
         super().save(*args, **kwargs)
 
     def __str__(self):
