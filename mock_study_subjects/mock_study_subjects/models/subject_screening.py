@@ -1,5 +1,11 @@
 from django.db import models
 from django.utils import timezone
+
+from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_managers import HistoricalRecords
+
+from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
+
 from ..choices import YES_NO, ENROLLMENT_SITES
 from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
@@ -10,8 +16,25 @@ from math import floor
 """TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
 """
 
+"""
+NOTES: 
 
-class SubjectScreening(models.Model):
+ - UniqueSubjectIdentifierFieldMixin: adds a subject_identifier field to your model
+ - BaseUuidModel: changes the id field from an int to a uuid 
+
+"""
+
+
+class EnrollmentManager(models.Manager):
+    """
+    get_by_natural_key allows us to search for patients using their screening identifier.
+    """
+
+    def get_by_natural_key(self, screening_identifier):
+        return self.get(screening_identifier=screening_identifier)
+
+
+class SubjectScreening(UniqueSubjectIdentifierFieldMixin, BaseUuidModel):
 
     identifier_cls = ScreeningIdentifier
     eligibility_cls = Eligibility
@@ -80,6 +103,10 @@ class SubjectScreening(models.Model):
         help_text="Hospitals where subject is recruited."
     )
 
+    history = HistoricalRecords()
+
+    objects = EnrollmentManager()
+
     def save(self, *args, **kwargs):
         eligibility_obj = self.eligibility_cls(
             hypertension_status=self.has_hypertension,
@@ -96,10 +123,6 @@ class SubjectScreening(models.Model):
 
     def __str__(self):
         return f'{self.screening_identifier}'
-
-    @property
-    def schedule_name(self):
-        return 'schedule'
 
     class Meta:
         app_label = 'mock_study_subjects'

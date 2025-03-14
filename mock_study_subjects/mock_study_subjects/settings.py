@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from datetime import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 APP_NAME = 'mock_study_subjects'
 
+STUDY_OPEN_DATETIME = datetime.today()
+STUDY_CLOSE_DATETIME = datetime.today()
+GENDER_OF_CONSENT = ['M', 'F']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'edc_base.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 
