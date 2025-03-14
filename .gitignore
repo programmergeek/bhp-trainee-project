@@ -4,3 +4,5 @@ include/
 pyvenv.cfg
 *.sqlite3
 __pycache__/
+
+scratchpad.py
