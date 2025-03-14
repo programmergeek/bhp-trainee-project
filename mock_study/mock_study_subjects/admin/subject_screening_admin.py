@@ -33,6 +33,3 @@ class SubjectScreeningAdmin(admin.ModelAdmin):
         'is_breastfeeding': admin.VERTICAL,
         'enrollment_site': admin.VERTICAL,
     }
-
-    def get_readonly_fields(self, request, obj=None):
-        return (super().get_readonly_fields(request, obj=obj))
