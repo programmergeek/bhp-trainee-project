@@ -20,8 +20,8 @@ from math import floor
 NOTES: 
 
  - UniqueSubjectIdentifierFieldMixin: adds a subject_identifier field to your model
- - BaseUuidModel: changes the id field from an int to a uuid 
-
+ - BaseUuidModel: changes the id field from an int to a uuid and providing extra fields such as when record was created created 
+ - Managers allow your models to communicate with the database. EnrollmentManager extends the django manager class to add the function get_by_natural_keys
 """
 
 

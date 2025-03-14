@@ -1,10 +1,7 @@
-import random
-from math import floor
+from edc_identifier.simple_identifier import SimpleUniqueIdentifier
 
 
-class ScreeningIdentifier:
+class ScreeningIdentifier(SimpleUniqueIdentifier):
 
-    def __init__(self):
-        # return floor(random.random() * 100000)
-
-        return None
+    random_string_length = 10
+    identifier_type = 'screening_identifier'

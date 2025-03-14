@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'edc_base.apps.AppConfig',
+    'edc_identifier.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 
