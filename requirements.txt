@@ -16,3 +16,4 @@ https://github.com/botswana-harvard/edc-identifier.git
 https://github.com/botswana-harvard/edc-constants.git
 https://github.com/botswana-harvard/edc-device.git
 https://github.com/botswana-harvard/edc-model-admin.git
+git+https://github.com/botswana-harvard/edc-identifier.git@develop#egg=edc-identifier
