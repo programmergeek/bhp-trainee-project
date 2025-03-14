@@ -37,7 +37,7 @@ GIT_DIR = os.path.dirname(BASE_DIR)
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
 
 # KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
-AUTO_CREATE_KEYS = True
+# AUTO_CREATE_KEYS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'edc_identifier.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_protocol.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 
