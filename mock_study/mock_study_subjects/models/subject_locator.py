@@ -2,9 +2,15 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.utils import timezone
 from ..choices import YES_NO
+from django_crypto_fields.fields import EncryptedCharField
+from edc_base.model_managers import HistoricalRecords
+from edc_base.model_mixins import BaseUuidModel
+from edc_base.sites import CurrentSiteManager, SiteModelMixin
+from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
+from edc_locator.model_mixins import LocatorModelMixin, LocatorManager
 
 
-class SubjectLocator(models.Model):
+class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, SiteModelMixin, BaseUuidModel):
 
     site = models.ForeignKey(
         Site, on_delete=models.PROTECT, null=True, editable=False,
@@ -37,7 +43,7 @@ class SubjectLocator(models.Model):
         help_text="",
     )
 
-    alt_contact_name = models.CharField(
+    alt_contact_name = EncryptedCharField(
         max_length=35,
         verbose_name="Full Name of the responsible person",
         help_text="include firstname and surname",
@@ -45,14 +51,14 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    alt_contact_rel = models.CharField(
+    alt_contact_rel = EncryptedCharField(
         max_length=35,
         verbose_name="Relationship to participant",
         blank=True,
         null=True,
         help_text="",
     )
-    alt_contact_cell = models.CharField(
+    alt_contact_cell = EncryptedCharField(
         max_length=8,
         verbose_name="Cell number",
         help_text="",
@@ -60,7 +66,7 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    other_alt_contact_cell = models.CharField(
+    other_alt_contact_cell = EncryptedCharField(
         max_length=8,
         verbose_name="Cell number (alternate)",
         help_text="",
@@ -68,13 +74,19 @@ class SubjectLocator(models.Model):
         null=True,
     )
 
-    alt_contact_tel = models.CharField(
+    alt_contact_tel = EncryptedCharField(
         max_length=8,
         verbose_name="Telephone number",
         help_text="",
         blank=True,
         null=True,
     )
+
+    history = HistoricalRecords()
+
+    objects = LocatorManager()
+
+    on_site = CurrentSiteManager()
 
     def __str__(self):
         return '{}'.format(self.subject_identifier)

@@ -14,7 +14,7 @@ from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
-from edc_identifier.model_mixins import UniqueSubjectIdentifierModelMixin
+from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin)
 from ..subject_identifier import SubjectIdentifier
@@ -93,7 +93,7 @@ class SubjectConsent(ConsentModelMixin,  # contains common properties for consen
                      UpdatesOrCreatesRegistrationModelMixin,
                      # Creating a subject identifier and using that as
                      # creates a unique subject identifier field and its corresponding methods
-                     UniqueSubjectIdentifierModelMixin,
+                     NonUniqueSubjectIdentifierModelMixin,
                      IdentityFieldsMixin,  # fields related to persons identity e.g id number
                      ReviewFieldsMixin,  # Review questions
                      PersonalFieldsMixin,
