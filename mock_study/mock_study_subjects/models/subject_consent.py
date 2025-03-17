@@ -17,7 +17,6 @@ from edc_consent.model_mixins import ConsentModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin)
-from ..subject_identifier import SubjectIdentifier
 
 """
 NOTES:
