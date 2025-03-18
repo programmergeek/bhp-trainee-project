@@ -13,9 +13,7 @@ class ModelAdminMixin(
         ModelAdminInstitutionMixin  # adds the institution attributes to the context
 ):
 
-    list_per_page = 10
-    date_hierarchy = 'modified'
-    empty_value_display = '-'
+    pass
 
 
 @admin.register(SubjectConsent, site=mock_study_admin)
