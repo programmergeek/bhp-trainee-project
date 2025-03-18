@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'edc_device.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
+    'mock_study_subjects.apps.EdcTimepointAppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 

@@ -1,4 +1,8 @@
 from django.apps import AppConfig as DjangoApponfig
+from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
+from edc_timepoint.timepoint import Timepoint
+from edc_timepoint.timepoint_collection import TimepointCollection
+from edc_appointment.constants import COMPLETE_APPT
 
 
 class AppConfig(DjangoApponfig):
@@ -8,3 +12,19 @@ class AppConfig(DjangoApponfig):
 
     screening_age_adult_upper = 99
     screening_age_adult_lower = 18
+
+
+class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
+    timepoints = TimepointCollection(
+        timepoints=[
+            Timepoint(
+                model='cancer_subject.appointment',
+                datetime_field='appt_datetime',
+                status_field='appt_status',
+                closed_status=COMPLETE_APPT),
+            Timepoint(
+                model='cancer_subject.historicalappointment',
+                datetime_field='appt_datetime',
+                status_field='appt_status',
+                closed_status=COMPLETE_APPT)
+        ])
