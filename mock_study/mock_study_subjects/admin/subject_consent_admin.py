@@ -6,7 +6,7 @@ from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
     audit_fieldset_tuple, ModelAdminNextUrlRedirectMixin,
-    ModelAdminReplaceLabelTextMixin)
+)
 
 
 class ModelAdminMixin(

@@ -22,10 +22,6 @@ class SubjectVisit(
         SiteModelMixin,
         BaseUuidModel):
 
-    """A model completed by the user that captures the covering
-    information for the data collected for this timepoint/appointment,
-    e.g.report_datetime.
-    """
     appointment = models.CharField(max_length=10)
 
     reason = models.CharField(
