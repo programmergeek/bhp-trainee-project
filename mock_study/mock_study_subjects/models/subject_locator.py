@@ -22,18 +22,6 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, SiteMod
         help_text="",
     )
 
-    local_clinic = models.CharField(
-        verbose_name=(
-            "When you stay in the village, what clinic/health post do you normally go to?"),
-        max_length=75,
-        help_text="Please give clinic code.",
-    )
-    home_village = models.CharField(
-        verbose_name=("Where is your home village?"),
-        max_length=75,
-        help_text="",
-    )
-
     has_alt_contact = models.CharField(
         max_length=25,
         choices=YES_NO,

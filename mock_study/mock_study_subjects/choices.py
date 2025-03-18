@@ -3,12 +3,28 @@ from .constants import NOT_APPLICABLE, OFF_STUDY, OTHER
 YES_NO = (('yes', "Yes"), ('no', 'No'))
 
 VISIT_INFO_SOURCE = (
-    ('', ''),
+    ('Clinic visit w/ subject', 'Clinic visit with participant'),
+    ('Other contact w/ subject', 'Other contact with participant (i.e telephone call)'),
+    ('Contact w/ family/design',
+     'Contact with family or designated person who can provide information'),
+    ('OTHER', 'Other,specify'),
 )
 
-VISIT_UNSCHEDULED_REASON = (('', ''),)
+VISIT_UNSCHEDULED_REASON = (
+    ('Patient called', 'Patient called to come for visit'),
+    (NOT_APPLICABLE, 'Not Applicable'),
+    ('OTHER', 'Other, specify:'),
+)
 
-VISIT_REASON = (('', ''),)
+VISIT_REASON = (
+    ('Weekly visit/contact', 'Weekly visit/contact'),
+    ('Unscheduled visit/contact', 'Unscheduled visit/contact'),
+    ('Missed missed visit', 'Missed weekly visit'),
+    ('Lost to follow-up', 'Lost to follow-up (use only when taking subject off study)'),
+    ('Death', 'Death'),
+    (OFF_STUDY, 'Off study'),
+    ('deferred', 'Deferred'),
+)
 
 ID_TYPE = (
     ('country_id', 'Country ID number'),
