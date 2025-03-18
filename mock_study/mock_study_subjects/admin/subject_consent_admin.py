@@ -2,7 +2,6 @@ from django.contrib import admin
 from ..admin_site import mock_study_admin
 from ..forms.subject_consent_form import SubjectConsentForm
 from ..models.subject_consent import SubjectConsent
-from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
@@ -10,9 +9,9 @@ from edc_model_admin import (
     ModelAdminReplaceLabelTextMixin)
 
 
-class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormAutoNumberMixin,
-                      ModelAdminRevisionMixin, ModelAdminReplaceLabelTextMixin,
-                      ModelAdminInstitutionMixin):
+class ModelAdminMixin(
+        ModelAdminInstitutionMixin  # adds the institution attributes to the context
+):
 
     list_per_page = 10
     date_hierarchy = 'modified'
