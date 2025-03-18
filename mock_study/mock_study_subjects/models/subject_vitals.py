@@ -1,29 +1,29 @@
 from django.db import models
-from ..choices import YES_NO, ENROLLMENT_SITES
+from .mixins.crfs_model_mixin import CrfModelMixin
 
 
-class SubjectVitals(models.Model):
+class SubjectVitals(CrfModelMixin):
+    systolic_blood_pressure = models.IntegerField(
+        help_text='mmHg'
+    )
 
-    subject_identifier = models.CharField(max_length=10)
+    diastolic_blood_pressure = models.IntegerField(
+        help_text='mmHg'
+    )
 
-    collection_site = models.CharField(max_length=50, choices=ENROLLMENT_SITES)
+    heart_rate = models.IntegerField(help_text='bpm')
 
-    were_vitals_collected = models.CharField(max_length=3, choices=YES_NO)
+    height = models.DecimalField(
+        max_digits=4,
+        decimal_places=1,
+        help_text='cm'
+    )
 
-    measurement_date = models.DateField()
-
-    systolic_blood_pressure = models.IntegerField()
-
-    diastolic_blood_pressure = models.IntegerField()
-
-    anatomical_location_of_measurement = models.CharField(max_length=50)
-
-    height = models.FloatField()
-
-    weight = models.FloatField()
-
-    is_baseline = models.BooleanField(
-        verbose_name='Is this the participant\'s baseline vitals measurement?')
+    weight = models.DecimalField(
+        max_digits=4,
+        decimal_places=1,
+        help_text='kg'
+    )
 
     class Meta:
         app_label = "mock_study_subjects"

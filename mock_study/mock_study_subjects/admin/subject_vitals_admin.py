@@ -11,19 +11,12 @@ class SubjectVitalsAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {
         'fields': [
-            'subject_identifier',
-            'collection_site',
-            'were_vitals_collected',
-            'measurement_date',
+            'subject_visit',
+            'report_datetime',
             'systolic_blood_pressure',
             'diastolic_blood_pressure',
-            'anatomical_location_of_measurement',
+            'heart_rate',
             'height',
             'weight',
-            'is_baseline'
         ]
     }),)
-
-    radio_fields = {
-        'collection_site': admin.VERTICAL,
-    }
