@@ -1,5 +1,5 @@
 """
-ASGI config for mock_study_subject_dashboard project.
+ASGI config for mock_study_dashboard project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,7 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mock_study_subject_dashboard.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'mock_study_dashboard.settings')
 
 application = get_asgi_application()
