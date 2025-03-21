@@ -4,16 +4,10 @@ from ..constants import NOT_APPLICABLE
 
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
-from edc_base.sites import CurrentSiteManager as BaseCurrentSiteManager
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
-
-
-class CurrentSiteManager(VisitModelManager, BaseCurrentSiteManager):
-    # This manager just combines the functions of the VisitModelManager and CurrentSiteManager from their respective edc modules
-    pass
 
 
 class SubjectVisit(
@@ -45,8 +39,6 @@ class SubjectVisit(
     history = HistoricalRecords()
 
     objects = VisitModelManager()
-
-    on_site = CurrentSiteManager()
 
     class Meta:
         app_label = 'mock_study_subjects'
