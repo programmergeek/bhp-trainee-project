@@ -18,7 +18,6 @@ class SubjectLocatorAdmin(admin.ModelAdmin):
             )}),
         subject_contacts_fieldset,
         work_contacts_fieldset,
-        other_indirect_contacts_fieldset,
         indirect_contacts_fieldset,
         audit_fieldset_tuple,
     )
