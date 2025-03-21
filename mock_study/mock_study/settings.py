@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -27,16 +28,32 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ETC_DIR = os.path.join(BASE_DIR, 'etc')
+APP_NAME = 'mock_study'
+
+DASHBOARD_URL_NAMES = {}
+
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crypto_fields.apps.AppConfig',
+    'edc_protocol.apps.AppConfig',
+    'edc_action_item.apps.AppConfig',
+    'mock_study_subjects.apps.AppConfig',
+    'edc_base.apps.AppConfig',
+    'mock_study.apps.AppConfig',
+    'mock_study_subject_validations.apps.AppConfig',
+    'mock_study.apps.EdcTimepointAppConfig',
+    'mock_study.apps.EdcLocatorAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +64,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'edc_dashboard.middleware.DashboardMiddleware',
+    'edc_subject_dashboard.middleware.DashboardMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mock_study.urls'
@@ -75,7 +95,7 @@ WSGI_APPLICATION = 'mock_study.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR + '/' + 'db.sqlite3',
     }
 }
 
