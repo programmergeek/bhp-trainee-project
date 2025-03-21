@@ -1,4 +1,6 @@
-from .constants import NOT_APPLICABLE, OFF_STUDY, OTHER
+from .constants import NOT_APPLICABLE, OFF_STUDY, OTHER, MALE, FEMALE
+from django.utils.translation import gettext as _
+
 
 YES_NO = (('yes', "Yes"), ('no', 'No'))
 
@@ -52,3 +54,8 @@ TESTING_SITES = (
 TESTING_STATUS = (('pending', 'Pending'), ('complete', 'Complete'))
 
 ANTICOAGULANTS = (('heparin', 'Heparin'), ('citrate', 'Citrate'))
+
+GENDER = (
+    (MALE, _('Male')),
+    (FEMALE, _('Female')),
+)

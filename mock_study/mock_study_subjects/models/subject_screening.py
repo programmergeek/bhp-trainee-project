@@ -3,21 +3,22 @@ from django.utils import timezone
 
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.model_managers import HistoricalRecords
-
+from edc_base.sites.site_model_mixin import SiteModelMixin
+from edc_constants.choices import GENDER, YES_NO
 from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 
-from ..choices import YES_NO, ENROLLMENT_SITES
+from .mixins.search_slug_model_mixin import SearchSlugMixin
+
+from ..choices import ENROLLMENT_SITES
 from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
-import random
-from math import floor
 
 
 """TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
 """
 
 """
-NOTES: 
+NOTES:
 
  - UniqueSubjectIdentifierFieldMixin: adds a subject_identifier field to your model
  - BaseUuidModel: changes the id field from an int to a uuid and providing extra fields such as when record was created created 
@@ -34,7 +35,11 @@ class EnrollmentManager(models.Manager):
         return self.get(screening_identifier=screening_identifier)
 
 
-class SubjectScreening(UniqueSubjectIdentifierFieldMixin, BaseUuidModel):
+class SubjectScreening(
+        UniqueSubjectIdentifierFieldMixin,
+        SiteModelMixin,
+        SearchSlugMixin,
+        BaseUuidModel):
 
     identifier_cls = ScreeningIdentifier
     eligibility_cls = Eligibility
@@ -101,6 +106,12 @@ class SubjectScreening(UniqueSubjectIdentifierFieldMixin, BaseUuidModel):
         null=True,
         choices=ENROLLMENT_SITES,
         help_text="Hospitals where subject is recruited."
+    )
+
+    gender = models.CharField(
+        max_length=2,
+        null=True,
+        choices=GENDER
     )
 
     history = HistoricalRecords()

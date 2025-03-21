@@ -102,8 +102,6 @@ class SubjectConsent(ConsentModelMixin,  # contains common properties for consen
                      VulnerabilityFieldsMixin,
                      BaseUuidModel):
 
-    subject_screening_model = 'mock_study_subjects.subject_screening'
-
     screening_identifier = models.CharField(
         verbose_name='Screening identifier',
         null=True,
