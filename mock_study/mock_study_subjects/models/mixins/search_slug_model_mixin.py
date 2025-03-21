@@ -10,3 +10,14 @@ class SearchSlugMixin(BaseSearchSlugModelMixin):
 
     class Meta:
         abstract = True
+
+
+class ScreeningSearchSlugModelMixin(BaseSearchSlugModelMixin):
+
+    def get_search_slug_fields(self):
+        fields = super().get_search_slug_fields()
+        fields.append('screening_identifier')
+        return fields
+
+    class Meta:
+        abstract = True

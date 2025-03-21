@@ -4,27 +4,25 @@ from ..forms.subject_consent_form import SubjectConsentForm
 from ..models.subject_consent import SubjectConsent
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_model_admin import (
-    ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
-    audit_fieldset_tuple, ModelAdminNextUrlRedirectMixin,
+    audit_fieldset_tuple, ModelAdminNextUrlRedirectMixin
 )
 
 
 class ModelAdminMixin(
-        ModelAdminInstitutionMixin  # adds the institution attributes to the context
+        ModelAdminNextUrlRedirectMixin
 ):
 
     pass
 
 
 @admin.register(SubjectConsent, site=mock_study_admin)
-class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, admin.ModelAdmin):
+class SubjectConsentAdmin(ModelAdminConsentMixin, admin.ModelAdmin):
 
     form = SubjectConsentForm
 
     fieldsets = (
         (None, {
             'fields': (
-                'subject_identifier',
                 'screening_identifier',
                 'first_name',
                 'last_name',
@@ -38,8 +36,9 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, admin.ModelAd
                 'guardian_name',
                 'is_dob_estimated',
                 'identity',
-                'identity_type',
                 'confirm_identity',
+                'identity_type',
+                'other_idenity_type',
                 'is_incarcerated')}),
         ('Review Questions', {
             'fields': (

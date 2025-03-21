@@ -3,11 +3,9 @@ from django.utils import timezone
 
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.model_managers import HistoricalRecords
-from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_constants.choices import GENDER, YES_NO
-from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 
-from .mixins.search_slug_model_mixin import SearchSlugMixin
+from .mixins.search_slug_model_mixin import ScreeningSearchSlugModelMixin
 
 from ..choices import ENROLLMENT_SITES
 from ..screening_identifier import ScreeningIdentifier
@@ -36,9 +34,7 @@ class EnrollmentManager(models.Manager):
 
 
 class SubjectScreening(
-        UniqueSubjectIdentifierFieldMixin,
-        SiteModelMixin,
-        SearchSlugMixin,
+        ScreeningSearchSlugModelMixin,
         BaseUuidModel):
 
     identifier_cls = ScreeningIdentifier
