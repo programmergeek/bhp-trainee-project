@@ -2,11 +2,10 @@ from ..constants import GENDER
 from django.db import models
 from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin as BaseUpdatesOrCreatesRegistrationModelMixin
 from edc_base.model_managers import HistoricalRecords
-from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_mixins import BaseModel
 from edc_base.sites import SiteModelMixin
 from edc_base.model_fields import OtherCharField
-from edc_consent.field_mixins import (SampleCollectionFieldsMixin,
-                                      CitizenFieldsMixin)
+from edc_consent.field_mixins import (SampleCollectionFieldsMixin)
 from edc_consent.field_mixins import IdentityFieldsMixin
 from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
@@ -58,7 +57,7 @@ class SubjectConsent(ConsentModelMixin,  # contains common properties for consen
                      # Fields relating to a person's citizenship status or if they are married to citizen.
                      VulnerabilityFieldsMixin,
                      SearchSlugMixin,
-                     BaseUuidModel):
+                     BaseModel):
 
     screening_identifier = models.CharField(
         verbose_name='Screening identifier',

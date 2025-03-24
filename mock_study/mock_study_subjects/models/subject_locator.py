@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from edc_base.model_managers import HistoricalRecords
-from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_mixins import BaseModel
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_locator.model_mixins import LocatorModelMixin, LocatorManager
 
 
-class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUuidModel):
+class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseModel):
 
     date_signed = models.DateField(
         verbose_name="Date Locator Form signed ",

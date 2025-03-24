@@ -2,11 +2,11 @@ from django.db import models
 from edc_appointment.managers import AppointmentManager
 from edc_appointment.model_mixins import AppointmentModelMixin
 from edc_base.model_managers import HistoricalRecords
-from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_mixins import BaseModel
 from ..choices import ENROLLMENT_SITES
 
 
-class Appointment(AppointmentModelMixin, BaseUuidModel):
+class Appointment(AppointmentModelMixin, BaseModel):
 
     subject_identifier = models.CharField(max_length=20)
 

@@ -3,7 +3,7 @@ from ..choices import VISIT_INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
 from ..constants import NOT_APPLICABLE
 
 from edc_base.model_managers import HistoricalRecords
-from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_mixins import BaseModel
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_visit_tracking.managers import VisitModelManager
@@ -14,7 +14,7 @@ class SubjectVisit(
         VisitModelMixin,
         RequiresConsentFieldsModelMixin,
         SiteModelMixin,
-        BaseUuidModel):
+        BaseModel):
 
     appointment = models.CharField(max_length=10)
 

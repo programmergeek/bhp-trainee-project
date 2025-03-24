@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
 from edc_constants.choices import GENDER, YES_NO
 
@@ -12,22 +12,7 @@ from ..screening_identifier import ScreeningIdentifier
 from ..eligibility import Eligibility
 
 
-"""TODO: Hide some fields (hypertension diagnosis, pregnancy, etc.) until consent is provided.
-"""
-
-"""
-NOTES:
-
- - UniqueSubjectIdentifierFieldMixin: adds a subject_identifier field to your model
- - BaseUuidModel: changes the id field from an int to a uuid and providing extra fields such as when record was created created 
- - Managers allow your models to communicate with the database. EnrollmentManager extends the django manager class to add the function get_by_natural_keys
-"""
-
-
 class EnrollmentManager(models.Manager):
-    """
-    get_by_natural_key allows us to search for patients using their screening identifier.
-    """
 
     def get_by_natural_key(self, screening_identifier):
         return self.get(screening_identifier=screening_identifier)
@@ -35,7 +20,7 @@ class EnrollmentManager(models.Manager):
 
 class SubjectScreening(
         ScreeningSearchSlugModelMixin,
-        BaseUuidModel):
+        BaseModel):
 
     identifier_cls = ScreeningIdentifier
     eligibility_cls = Eligibility

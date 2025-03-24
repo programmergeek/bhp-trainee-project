@@ -62,7 +62,6 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, admin.ModelAdmin):
         "is_incarcerated": admin.VERTICAL,
         "is_literate": admin.VERTICAL,
         "language": admin.VERTICAL,
-        "may_store_genetic_samples": admin.VERTICAL,
         "may_store_samples": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
     }
