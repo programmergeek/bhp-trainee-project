@@ -5,7 +5,6 @@ from edc_constants.constants import MALE
 class SubjectScreeningValidator(FormValidator):
 
     def clean(self):
-        super().clean()
         self.applicable_if_true(
             field='gender',
             condition=self.cleaned_data.get('gender') != MALE,
