@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 from datetime import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -56,9 +57,9 @@ INSTALLED_APPS = [
     'edc_device.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
-    'mock_study_subjects.apps.EdcTimepointAppConfig',
     'edc_action_item.apps.AppConfig',
     'mock_study_subjects.apps.EdcLocatorAppConfig',
+    'mock_study_subjects.apps.EdcTimepointAppConfig',
     'mock_study_subjects.apps.AppConfig'
 ]
 
@@ -145,3 +146,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if 'test' in sys.argv:
+
+    class DisableMigrations:
+
+        def __contains__(self, item):
+            return True
+
+        def __getitem__(self, item):
+            return None
+
+    MIGRATION_MODULES = DisableMigrations()
