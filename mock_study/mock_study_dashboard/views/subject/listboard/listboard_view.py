@@ -24,14 +24,3 @@ class SubjectListboardView(EdcBaseViewMixin, ListboardFilterViewMixin, Listboard
             subject_consent_add_url=self.model_cls().get_absolute_url(),
         )
         return context
-
-    # def get_queryset_filter_options(self, request, *args, **kwargs):
-    #     options = super().get_queryset_filter_options(request, *args, **kwargs)
-    #     try:
-    #         options.pop('site')
-    #     except KeyError:
-    #         pass
-    #     if kwargs.get('subject_identifier'):
-    #         options.update(
-    #             {'subject_identifier': kwargs.get('subject_identifier')})
-    #     return options
