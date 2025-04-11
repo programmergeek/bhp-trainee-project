@@ -6,9 +6,9 @@
   title="add subject consent"
   class="btn btn-sm btn-default"
   role="button"
-  href="{{ subject_screening_add_url }}?next={{ subject_listboard_url }}"
+  href="{{ subject_consent_add_url }}?next={{ subject_listboard_url }}"
 >
-  <i class="fa fa-plus fa-sm"></i> Add Subject Consent
+  <i class="fa fa-user-plus fa-sm"></i> Add Subject Consent
 </a>
 {% endblock listboard_panel %} {% block listboard_table_header %}
 
@@ -24,17 +24,17 @@
 {% endblock listboard_table_header %} {% block listboard_table_button_column %}
 <td style="white-space: nowrap">
   <div class="btn-group">
-    
+    {% if not result.is_consented %}  {% endif %}
   </div>
 </td>
-{% endblock listboard_table_button_column %} 
-{% block listboard_table_columns %}
+{% endblock listboard_table_button_column %} {% block listboard_table_columns %}
 <td>{{ result.subject_identifier }}</td>
 <td>
   {% if result.gender == MALE %}
   <i class="fa fa-male fa-lg"></i>
-  {% endif %}
+  {% else %}
   <i class="fa fa-female fa-lg"></i>
+  {% endif %} {{ result.first_name }} {{ result.initials }}
 </td>
 
 <td>
