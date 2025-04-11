@@ -1,0 +1,1 @@
+MISSED_VISIT = 'missed'
