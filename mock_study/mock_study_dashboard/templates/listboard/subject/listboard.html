@@ -1,0 +1,47 @@
+{% extends "edc_dashboard/listboard.html" %}
+{% load edc_base_extras %}
+{% block listboard_panel %}
+<a
+  id="subjectconsent_add"
+  title="add subject consent"
+  class="btn btn-sm btn-default"
+  role="button"
+  href="{{ subject_screening_add_url }}?next={{ subject_listboard_url }}"
+>
+  <i class="fa fa-plus fa-sm"></i> Add Subject Consent
+</a>
+{% endblock listboard_panel %} {% block listboard_table_header %}
+
+<!-- begin results header -->
+<th>#</th>
+<th></th>
+<th>Identifier</th>
+<th>Subject</th>
+<th>Age / Born</th>
+<th>Site</th>
+<th>Consented</th>
+<!-- end results header -->
+{% endblock listboard_table_header %} {% block listboard_table_button_column %}
+<td style="white-space: nowrap">
+  <div class="btn-group">
+    
+  </div>
+</td>
+{% endblock listboard_table_button_column %} 
+{% block listboard_table_columns %}
+<td>{{ result.subject_identifier }}</td>
+<td>
+  {% if result.gender == MALE %}
+  <i class="fa fa-male fa-lg"></i>
+  {% endif %}
+  <i class="fa fa-female fa-lg"></i>
+</td>
+
+<td>
+  {% age_in_years result.object.dob %}yrs
+  {{result.object.dob|date:"SHORT_DATE_FORMAT" }}
+</td>
+<td>{{ result.object.site.name }}</td>
+<td>{{ result.object.consent_datetime|date:"SHORT_DATE_FORMAT" }}</td>
+
+{% endblock listboard_table_columns %}

@@ -27,19 +27,25 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+APP_NAME = "mock_study_dashboard"
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'edc_model_wrapper.apps.AppConfig',
+    'mock_study_dashboard.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,7 +53,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'edc_subject_dashboard.middleware.DashboardMiddleware',
+    'edc_dashboard.middleware.DashboardMiddleware',
 ]
+
+DASHBOARD_URL_NAMES = {
+    'screening_listboard_url': 'mock_study_dashboard:screening_listboard',
+    'subject_listboard_url': 'mock_study_dashboard:subject_listboard'
+}
+
+DASHBOARD_BASE_TEMPLATES = {
+    'screening_listboard_template': 'listboard/screening/listboard.html',
+    'mock_study_subject_listboard_template': 'listboard/subject/listboard.html'
+}
 
 ROOT_URLCONF = 'mock_study_dashboard.urls'
 

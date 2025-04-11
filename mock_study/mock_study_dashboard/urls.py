@@ -1,22 +1,24 @@
-"""
-URL configuration for mock_study_dashboard project.
+from edc_dashboard import UrlConfig
+from .patterns import subject_identifier, screening_identifier
+from .views.screening.listboard_view import ScreeningListboardView
+from .views.subject.listboard.listboard_view import SubjectListboardView
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
+app_name = "mock_study_dashboard"
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+subject_listboard_url_config = UrlConfig(
+    url_name='subject_listboard_url',
+    view_class=SubjectListboardView,
+    label='subject_listboard',
+    identifier_label='subject_identifier',
+    identifier_pattern=subject_identifier)
+
+screening_listboard_url_config = UrlConfig(
+    url_name='screening_listboard_url',
+    view_class=ScreeningListboardView,
+    label='screening_listboard',
+    identifier_label='screening_identifier',
+    identifier_pattern=screening_identifier)
+
+urlpatterns = []
+urlpatterns += subject_listboard_url_config.listboard_urls
+urlpatterns += screening_listboard_url_config.listboard_urls
