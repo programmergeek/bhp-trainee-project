@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +32,6 @@ ALLOWED_HOSTS = []
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
 APP_NAME = 'mock_study'
 
-DASHBOARD_URL_NAMES = {}
 
 SITE_ID = 1
 
@@ -56,9 +56,12 @@ INSTALLED_APPS = [
     'mock_study_subject_validations.apps.AppConfig',
     'mock_study.apps.EdcTimepointAppConfig',
     'mock_study.apps.EdcLocatorAppConfig',
+    'mock_study_dashboard',
+    'edc_dashboard.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,9 +139,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/2.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DASHBOARD_URL_NAMES = {
+    'screening_listboard_url': 'mock_study_dashboard:screening_listboard_url',
+    'subject_listboard_url': 'mock_study_dashboard:subject_listboard_url',
+}
+
+DASHBOARD_BASE_TEMPLATES = {
+    'listboard_base_template': 'mock_study_dashboard/base.html',
+    'screening_listboard_template': 'listboard/screening/listboard.html',
+    'subject_listboard_template': 'listboard/subject/listboard.html'
+}

@@ -23,5 +23,7 @@ urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
     path('admin/', include('edc_base.auth.urls')),
     path('admin/', mock_study_admin.urls),
-    path('amdin/', admin.site.urls)
+    path('amdin/', admin.site.urls),
+    path('subject/', include('mock_study_dashboard.urls',
+         namespace="mock_study_dashboard"))
 ]

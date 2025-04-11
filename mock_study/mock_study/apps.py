@@ -19,12 +19,12 @@ class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
     timepoints = TimepointCollection(
         timepoints=[
             Timepoint(
-                model='cancer_subject.appointment',
+                model='mock_study_subjects.appointment',
                 datetime_field='appt_datetime',
                 status_field='appt_status',
                 closed_status=COMPLETE_APPT),
             Timepoint(
-                model='cancer_subject.historicalappointment',
+                model='mock_study_subjects.historicalappointment',
                 datetime_field='appt_datetime',
                 status_field='appt_status',
                 closed_status=COMPLETE_APPT)
