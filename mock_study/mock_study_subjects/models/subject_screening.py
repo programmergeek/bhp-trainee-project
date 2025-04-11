@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 from edc_base.model_mixins import BaseModel
+from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.model_managers import HistoricalRecords
 from edc_constants.choices import GENDER, YES_NO
 
@@ -19,6 +20,7 @@ class EnrollmentManager(models.Manager):
 
 
 class SubjectScreening(
+        SiteModelMixin,
         ScreeningSearchSlugModelMixin,
         BaseModel):
 
