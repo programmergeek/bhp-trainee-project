@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
-import sys
+from datetime import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
 APP_NAME = 'mock_study'
 
+STUDY_OPEN_DATETIME = datetime(2025, 8, 30)
+STUDY_CLOSE_DATETIME = datetime(2027, 8, 30)
 
 SITE_ID = 1
 
@@ -57,6 +59,8 @@ INSTALLED_APPS = [
     'mock_study.apps.EdcTimepointAppConfig',
     'mock_study.apps.EdcLocatorAppConfig',
     'edc_consent.apps.AppConfig',
+    'edc_registration.apps.AppConfig',
+    'edc_visit_schedule.apps.AppConfig',
     'mock_study_dashboard',
     'edc_dashboard.apps.AppConfig',
 ]
