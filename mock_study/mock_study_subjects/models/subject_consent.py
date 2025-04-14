@@ -1,6 +1,6 @@
 from ..constants import GENDER
 from django.db import models
-from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin as BaseUpdatesOrCreatesRegistrationModelMixin
+from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseModel
 from edc_base.sites import SiteModelMixin
@@ -12,11 +12,10 @@ from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
-from edc_registration.model_mixins import (
-    UpdatesOrCreatesRegistrationModelMixin)
 
 from .mixins.search_slug_model_mixin import SearchSlugMixin
 from ..choices import ID_TYPE
+from .subject_screening import SubjectScreening
 
 """
 NOTES:
@@ -35,35 +34,20 @@ class ConsentManager(models.Manager):
             subject_identifier=subject_identifier, version=version)
 
 
-class updatesOrCreatesRegistrationMixin(BaseUpdatesOrCreatesRegistrationModelMixin):
-
-    class Meta:
-        # Defines this mixin as an abstract model, meaning only the models which implement this mixin
-        # have tables created for them in the database, but the mixin won't get a table
-        abstract = True
-
-
-class SubjectConsent(ConsentModelMixin,  # contains common properties for consent models
-                     # contains logic to register participant
+class SubjectConsent(ConsentModelMixin,
                      UpdatesOrCreatesRegistrationModelMixin,
                      SiteModelMixin,
-                     # Creating a subject identifier and using that as
-                     # creates a unique subject identifier field and its corresponding methods
                      NonUniqueSubjectIdentifierModelMixin,
-                     IdentityFieldsMixin,  # fields related to persons identity e.g id number
-                     ReviewFieldsMixin,  # Review questions
+                     IdentityFieldsMixin,
+                     ReviewFieldsMixin,
                      PersonalFieldsMixin,
                      SampleCollectionFieldsMixin,
-                     # Fields relating to a person's citizenship status or if they are married to citizen.
                      VulnerabilityFieldsMixin,
                      SearchSlugMixin,
                      BaseModel):
 
-    screening_identifier = models.CharField(
-        verbose_name='Screening identifier',
-        null=True,
-        blank=True,
-        max_length=50)
+    screening_identifier = models.ForeignKey(
+        SubjectScreening, on_delete=models.CASCADE)
 
     gender = models.CharField(
         verbose_name="Gender",
@@ -98,7 +82,7 @@ class SubjectConsent(ConsentModelMixin,  # contains common properties for consen
     def natural_key(self):
         return (self.subject_identifier, self.version,)
 
-    class Meta:
+    class Meta(ConsentModelMixin.Meta):
         app_label = 'mock_study_subjects'
         get_latest_by = 'consent_datetime'
         verbose_name = 'Mock Study Consent'

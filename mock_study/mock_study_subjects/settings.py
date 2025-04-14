@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
     'edc_action_item.apps.AppConfig',
+    'edc_consent',
     'mock_study_subjects.apps.EdcLocatorAppConfig',
     'mock_study_subjects.apps.EdcTimepointAppConfig',
     'mock_study_subjects.apps.AppConfig'

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'mock_study_subject_validations.apps.AppConfig',
     'mock_study.apps.EdcTimepointAppConfig',
     'mock_study.apps.EdcLocatorAppConfig',
+    'edc_consent.apps.AppConfig',
     'mock_study_dashboard',
     'edc_dashboard.apps.AppConfig',
 ]

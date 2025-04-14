@@ -5,6 +5,8 @@ from edc_base.model_mixins import BaseModel
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.model_managers import HistoricalRecords
 from edc_constants.choices import GENDER, YES_NO
+from edc_constants.constants import MALE, NO
+
 
 from .mixins.search_slug_model_mixin import ScreeningSearchSlugModelMixin
 
@@ -59,14 +61,14 @@ class SubjectScreening(
         max_length=3,
         choices=YES_NO,
         verbose_name="Are they currently pregnant?",
-        help_text="If 'Yes', then stop. The patient cannot be part of this study. "
+        help_text="If 'Yes', then stop. The patient cannot be part of this study. ",
     )
 
     is_breastfeeding = models.CharField(
         max_length=3,
         choices=YES_NO,
         verbose_name="Is the patient currently breastfeeding?",
-        help_text="If 'Yes', then stop. The patient cannot be part of this study."
+        help_text="If 'Yes', then stop. The patient cannot be part of this study.",
     )
 
     has_allergies_to_drug = models.CharField(
@@ -111,6 +113,10 @@ class SubjectScreening(
             is_pregnant=self.is_pregnant
         )
         self.eligible = eligibility_obj.eligible
+        if self.gender == MALE and not self.id:
+            self.is_pregnant = NO
+            self.is_breastfeeding = NO
+
         if not self.id:
             self.screening_identifier = self.identifier_cls().identifier
         super().save(*args, **kwargs)
