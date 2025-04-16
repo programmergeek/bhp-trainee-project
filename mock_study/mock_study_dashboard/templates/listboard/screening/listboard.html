@@ -2,22 +2,14 @@
 {% load admin_urls %} 
 {% load edc_base_extras %} 
 {% block listboard_table_header %}
-<!-- begin results header -->
 <th>#</th>
 <th></th>
 <th>Screening Identifier</th>
 <th>Age</th>
-<th>User</th>
-<th>Modified</th>
-<th>Host</th>
-<!-- end results header -->
+<th>Eligible</th>
 {% endblock listboard_table_header %} 
 {% block listboard_table_columns %}
-
 <td>{{ result.screening_identifier }}</td>
-<td nowrap>{{ result.age_in_years }} yrs</td>
-<td nowrap>{{ result.user_created }}</td>
-<td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
-<td nowrap>{{ result.hostname_created }}</td>
-
+<td nowrap>{{ result.age }} yrs</td>
+<td nowrap>{{ result.eligible }} </td>
 {% endblock listboard_table_columns %}

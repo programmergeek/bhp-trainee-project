@@ -16,8 +16,6 @@ class SubjectListboardView(EdcBaseViewMixin, ListboardFilterViewMixin, Listboard
     model = 'mock_study_subjects.subjectconsent'
     model_wrapper_cls = SubjectConsentModelWrapper
 
-    paginate_by = 10
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(

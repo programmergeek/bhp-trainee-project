@@ -16,10 +16,9 @@ class ScreeningListboardView(EdcBaseViewMixin, ListboardFilterViewMixin, Listboa
     model = 'mock_study_subjects.subjectscreening'
     model_wrapper_cls = SubjectScreeningModelWrapper
 
-    paginate_by = 10
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(context.items())
         context.update(
             subject_screening_add_url=self.model_cls().get_absolute_url(),)
         return context
