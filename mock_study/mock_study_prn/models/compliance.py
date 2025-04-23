@@ -19,8 +19,10 @@ class ComplianceReport(SiteModelMixin, BaseModel, ActionModelMixin):
 
     doses_taken = models.IntegerField(default=0)
 
-    has_side_effects = models.TextField(
-        verbose_name="Has the participant noticied any side effects from the medication?", choices=YES_NO)
+    has_side_effects = models.CharField(
+        max_length=3,
+        verbose_name="Has the participant noticied any side effects from the medication?",
+        choices=YES_NO)
 
     side_effects = models.TextField(
         verbose_name="If 'Yes', describe what they are")

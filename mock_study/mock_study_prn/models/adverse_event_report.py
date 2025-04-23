@@ -24,9 +24,7 @@ class AdverseEventActionModel(SiteModelMixin, BaseModel, ActionModelMixin):
 
     outcome = models.TextField()
 
-    investigator_review = models.TextField()
-
-    investigator_comment = models.TextField()
+    comment = models.TextField()
 
     class Meta:
         app_label = 'mock_study_prn'

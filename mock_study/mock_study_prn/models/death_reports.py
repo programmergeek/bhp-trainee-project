@@ -16,15 +16,18 @@ class DeathReport(SiteModelMixin, ActionModelMixin, BaseModel):
 
     cause_of_death = models.TextField()
 
-    is_death_date_estimated = models.TextField(choices=YES_NO)
+    is_death_date_estimated = models.CharField(max_length=3, choices=YES_NO)
 
     source_of_info = models.TextField(
         verbose_name="What is your source of information on the death of the participant?")
 
-    was_hospitalised = models.TextField(
-        choices=YES_NO, verbose_name="Was the participant hospitalised before their death?")
+    was_hospitalised = models.CharField(
+        max_length=3,
+        choices=YES_NO,
+        verbose_name="Was the participant hospitalised before their death?")
 
-    hospital_hospitalised = models.TextField(
+    hospital_hospitalised = models.CharField(
+        max_length=200,
         verbose_name="What is the name of the hospital the participant was hospitalised in?")
 
     reason_hospitalised = models.TextField(

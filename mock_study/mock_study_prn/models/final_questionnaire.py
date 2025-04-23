@@ -13,26 +13,47 @@ class FinalQuestionnaire(SiteModelMixin, BaseModel, ActionModelMixin):
 
     action_name = FINAL_QUESTIONNAIRE_ACTION_ITEM_NAME
 
-    experience_rating = models.TextField(
-        choices=EXPERIENCE_RATING, verbose_name='How would you describe your experience as a participant in the study?')
+    experience_rating = models.CharField(
+        max_length=20,
+        choices=EXPERIENCE_RATING,
+        verbose_name='How would you describe your experience as a participant in the study?')
 
-    study_purpose = models.TextField(
-        choices=YES_NO, verbose_name="Do you believe that the purpose of the study was clearly explained to you?")
+    study_purpose = models.CharField(
+        max_length=3,
+        choices=YES_NO,
+        verbose_name="Do you believe that the purpose of the study was clearly explained to you?")
 
-    respectful_staff = models.TextField(
+    study_purpose_grievance = models.TextField(
+        verbose_name="Please leave a comment on why you believe the purpose of the study was not clearly explained to you.")
+
+    respectful_staff = models.CharField(
+        max_length=3,
         choices=YES_NO, verbose_name="Do you believe that the staff was respectful and professional?")
 
-    visit = models.TextField(
+    visit = models.CharField(
+        max_length=20,
         choices=RATING_SCALE, verbose_name="Was the visit schedule easy for you to work with?")
 
-    adherence = models.TextField(
+    adherence = models.CharField(
+        max_length=20,
         choices=RATING_SCALE, verbose_name="Did you find it easy to take your medication as instructed?")
 
-    instruction_clearity = models.TextField(
+    instruction_clearity = models.CharField(
+        max_length=20,
         choices=RATING_SCALE, verbose_name="Do you believe the instructions given were simple to understand and follow. If you disagree, please state why.")
 
     instruction_clearity_grievance = models.TextField(
         verbose_name="Please state what about the instructions were not clear.", null=True, blank=True)
+
+    benefits = models.TextField(
+        verbose_name="What do you believe were the benefits of participating in this study?")
+
+    challenges = models.TextField(
+        verbose_name='What do you believe were the challenges you experiences because you were participating in this study?')
+
+    paricipate_again = models.CharField(
+        max_length=3,
+        verbose_name="Would like to participate in any future studies we conduct?", choices=YES_NO)
 
     history = HistoricalRecords()
 
