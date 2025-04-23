@@ -11,7 +11,6 @@ class AdverseEventAction(Action):
     display_name = "Adverse Event"
     reference_model = "mock_study_prn.adverseevent"
     priority = HIGH_PRIORITY
-    singleton = True
 
     # After this action triggered, if the
     # severity of the action item is death
