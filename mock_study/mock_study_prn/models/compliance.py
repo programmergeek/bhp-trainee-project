@@ -1,31 +1,32 @@
 from django.db import models
-from edc_base.sites import SiteModelMixin
+from django.utils import timezone
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
 from edc_identifier.managers import SubjectIdentifierManager
 from edc_action_item.model_mixins import ActionModelMixin
-from edc_constants.choices import YES_NO
 from ..action_items.complaince_action_item import COMPLIANCE_ACTION_ITEM_NAME
 
 
-class ComplianceReport(SiteModelMixin, BaseModel, ActionModelMixin):
+class ComplianceReport(BaseModel, ActionModelMixin):
 
     action_name = COMPLIANCE_ACTION_ITEM_NAME
-
-    missed_days = models.TextField(
-        verbose_name="How many times have you missed taking the study medication")
 
     doses_prescribed = models.IntegerField(default=0)
 
     doses_taken = models.IntegerField(default=0)
 
-    has_side_effects = models.CharField(
-        max_length=3,
-        verbose_name="Has the participant noticied any side effects from the medication?",
-        choices=YES_NO)
+    missed_dosses_reason = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="If you have not taken the prescribed dossage please explain why?",
+    )
 
-    side_effects = models.TextField(
-        verbose_name="If 'Yes', describe what they are")
+    missed_visits = models.IntegerField()
+
+    report_datetime = models.DateTimeField(
+        verbose_name="Amount of visits missed",
+        default=timezone.now()
+    )
 
     comment = models.TextField()
 

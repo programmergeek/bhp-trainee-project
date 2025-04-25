@@ -1,14 +1,13 @@
 from django.db import models
 from edc_action_item.model_mixins import ActionModelMixin
-from edc_base.sites import SiteModelMixin
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
-from edc_identifier.managers import
+from edc_identifier.managers import SubjectIdentifierManager
 from ..action_items.death_report_action_item import DEATH_REPORT_ACTION_ITEM_NAME
 from edc_constants.choices import YES_NO
 
 
-class DeathReport(SiteModelMixin, ActionModelMixin, BaseModel):
+class DeathReport(ActionModelMixin, BaseModel):
 
     action_name = DEATH_REPORT_ACTION_ITEM_NAME
 
@@ -37,6 +36,8 @@ class DeathReport(SiteModelMixin, ActionModelMixin, BaseModel):
         default=0, verbose_name="For how many days were they hospitalised?")
 
     history = HistoricalRecords()
+
+    objects = SubjectIdentifierManager()
 
     class Meta:
         app_label = 'mock_study_prn'

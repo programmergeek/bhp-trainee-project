@@ -1,5 +1,4 @@
 from django.db import models
-from edc_base.sites import SiteModelMixin
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
 from edc_identifier.managers import SubjectIdentifierManager
@@ -9,7 +8,7 @@ from ..action_items.final_questionnaire_action_item import FINAL_QUESTIONNAIRE_A
 from ..choices import EXPERIENCE_RATING, RATING_SCALE
 
 
-class FinalQuestionnaire(SiteModelMixin, BaseModel, ActionModelMixin):
+class FinalQuestionnaire(BaseModel, ActionModelMixin):
 
     action_name = FINAL_QUESTIONNAIRE_ACTION_ITEM_NAME
 
@@ -24,6 +23,8 @@ class FinalQuestionnaire(SiteModelMixin, BaseModel, ActionModelMixin):
         verbose_name="Do you believe that the purpose of the study was clearly explained to you?")
 
     study_purpose_grievance = models.TextField(
+        blank=True,
+        null=True,
         verbose_name="Please leave a comment on why you believe the purpose of the study was not clearly explained to you.")
 
     respectful_staff = models.CharField(
