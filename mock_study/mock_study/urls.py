@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mock_study_subjects.admin_site import mock_study_admin
-
+from mock_study_prn.admin_site import mock_study_prn_admin
 
 urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', mock_study_admin.urls),
     path('amdin/', admin.site.urls),
     path('subject/', include('mock_study_dashboard.urls',
-         namespace="mock_study_dashboard"))
+         namespace="mock_study_dashboard")),
+    path('admin/prn/', mock_study_prn_admin.urls)
 ]

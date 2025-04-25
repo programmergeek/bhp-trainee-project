@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'edc_visit_schedule.apps.AppConfig',
     'mock_study_dashboard',
     'edc_dashboard.apps.AppConfig',
+    'mock_study_prn.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
