@@ -1,0 +1,5 @@
+from .adverse_event_admin import AdverseEventAdmin
+from .death_report_admin import DeathReportAdmin
+from .subject_offstudy_admin import SubjectOffStudyAdmin
+from .compliance_admin import ComplianceAdmin
+from .final_questionnaire_admin import FinalQuestionnareAdmin
