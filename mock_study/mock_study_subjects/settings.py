@@ -30,8 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 APP_NAME = 'mock_study_subjects'
 
-STUDY_OPEN_DATETIME = datetime(2025, 8, 30)
-STUDY_CLOSE_DATETIME = datetime(2027, 8, 30)
 GENDER_OF_CONSENT = ['M', 'F']
 
 GIT_DIR = os.path.dirname(BASE_DIR)
