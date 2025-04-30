@@ -16,6 +16,7 @@ class FinalQuestionnareAdmin(admin.ModelAdmin):
             'study_purpose',
             'study_purpose_grievance',
             'respectful_staff',
+            'respectful_staff_comment',
             'visit',
             'adherence',
             'instruction_clearity',

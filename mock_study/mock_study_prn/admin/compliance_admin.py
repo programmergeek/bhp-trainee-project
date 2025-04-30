@@ -14,6 +14,7 @@ class ComplianceAdmin(admin.ModelAdmin):
             'subject_identifier',
             'doses_prescribed',
             'doses_taken',
+            'missed_dosses_reason',
             'missed_visits',
             'report_datetime',
             'comment',
