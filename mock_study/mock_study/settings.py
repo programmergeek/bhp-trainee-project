@@ -33,7 +33,7 @@ ETC_DIR = os.path.join(BASE_DIR, 'etc')
 APP_NAME = 'mock_study'
 
 STUDY_OPEN_DATETIME = datetime(2025, 8, 30)
-STUDY_CLOSE_DATETIME = datetime(2027, 8, 30)
+STUDY_CLOSE_DATETIME = datetime(2037, 8, 30)
 
 SITE_ID = 1
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_crypto_fields.apps.AppConfig',
-    'edc_protocol.apps.AppConfig',
+    'mock_study.apps.EdcProtocolAppConfig',
     'edc_action_item.apps.AppConfig',
     'mock_study_subjects.apps.AppConfig',
     'edc_device.apps.AppConfig',
@@ -135,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
 
