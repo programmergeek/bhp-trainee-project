@@ -1,5 +1,5 @@
 from django.apps import apps
-from edc_action_item import Action, site_action_items, HIGH_PRIORITY
+from edc_action_item import Action, site_action_items
 from django.core.exceptions import ObjectDoesNotExist
 from .death_report_action_item import DeathReportAction
 
@@ -10,7 +10,6 @@ class AdverseEventAction(Action):
     name = ADVERSE_EVENT_ACTION_NAME
     display_name = "Adverse Event"
     reference_model = "mock_study_prn.adverseevent"
-    priority = HIGH_PRIORITY
 
     # After this action triggered, if the
     # severity of the action item is death
