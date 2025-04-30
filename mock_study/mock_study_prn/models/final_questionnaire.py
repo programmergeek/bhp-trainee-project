@@ -31,6 +31,12 @@ class FinalQuestionnaire(BaseModel, ActionModelMixin):
         max_length=3,
         choices=YES_NO, verbose_name="Do you believe that the staff was respectful and professional?")
 
+    respectful_staff_comment = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="If you believe that the staff have not been respectful, please leave a comment as to why."
+    )
+
     visit = models.CharField(
         max_length=20,
         choices=RATING_SCALE, verbose_name="Was the visit schedule easy for you to work with?")
@@ -41,7 +47,7 @@ class FinalQuestionnaire(BaseModel, ActionModelMixin):
 
     instruction_clearity = models.CharField(
         max_length=20,
-        choices=RATING_SCALE, verbose_name="Do you believe the instructions given were simple to understand and follow. If you disagree, please state why.")
+        choices=RATING_SCALE, verbose_name="Do you believe the instructions given were simple to understand and follow?")
 
     instruction_clearity_grievance = models.TextField(
         verbose_name="Please state what about the instructions were not clear.", null=True, blank=True)

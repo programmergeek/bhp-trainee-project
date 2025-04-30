@@ -26,13 +26,19 @@ class DeathReport(ActionModelMixin, BaseModel):
         verbose_name="Was the participant hospitalised before their death?")
 
     hospital_hospitalised = models.CharField(
+        blank=True,
+        null=True,
         max_length=200,
         verbose_name="What is the name of the hospital the participant was hospitalised in?")
 
     reason_hospitalised = models.TextField(
+        blank=True,
+        null=True,
         verbose_name="If they were hospitalised, why?")
 
     days_hospitalised = models.IntegerField(
+        blank=True,
+        null=True,
         default=0, verbose_name="For how many days were they hospitalised?")
 
     history = HistoricalRecords()

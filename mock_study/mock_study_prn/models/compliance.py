@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
 from edc_identifier.managers import SubjectIdentifierManager
@@ -23,10 +22,7 @@ class ComplianceReport(BaseModel, ActionModelMixin):
 
     missed_visits = models.IntegerField()
 
-    report_datetime = models.DateTimeField(
-        verbose_name="Amount of visits missed",
-        default=timezone.now()
-    )
+    report_datetime = models.DateTimeField()
 
     comment = models.TextField()
 
