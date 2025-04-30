@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
 from edc_identifier.managers import SubjectIdentifierManager
@@ -10,9 +11,11 @@ class ComplianceReport(BaseModel, ActionModelMixin):
 
     action_name = COMPLIANCE_ACTION_ITEM_NAME
 
-    doses_prescribed = models.IntegerField(default=0)
+    doses_prescribed = models.IntegerField(
+        default=0, validators=[MinValueValidator(0)])
 
-    doses_taken = models.IntegerField(default=0)
+    doses_taken = models.IntegerField(
+        default=0, validators=[MinValueValidator(0)])
 
     missed_dosses_reason = models.TextField(
         blank=True,
@@ -20,7 +23,7 @@ class ComplianceReport(BaseModel, ActionModelMixin):
         verbose_name="If you have not taken the prescribed dossage please explain why?",
     )
 
-    missed_visits = models.IntegerField()
+    missed_visits = models.IntegerField(validators=[MinValueValidator(0)])
 
     report_datetime = models.DateTimeField()
 

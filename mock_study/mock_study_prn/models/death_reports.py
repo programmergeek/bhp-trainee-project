@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 from edc_action_item.model_mixins import ActionModelMixin
 from edc_base.model_mixins import BaseModel
 from edc_base.model_managers import HistoricalRecords
@@ -39,7 +40,10 @@ class DeathReport(ActionModelMixin, BaseModel):
     days_hospitalised = models.IntegerField(
         blank=True,
         null=True,
-        default=0, verbose_name="For how many days were they hospitalised?")
+        default=0,
+        verbose_name="For how many days were they hospitalised?",
+        validators=[MinValueValidator(0)]
+    )
 
     history = HistoricalRecords()
 
