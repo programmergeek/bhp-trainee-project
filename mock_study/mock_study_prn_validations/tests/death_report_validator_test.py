@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.test import TestCase
 from edc_constants.constants import YES
 from django.core.exceptions import ValidationError
@@ -28,3 +29,14 @@ class DeathReportValidatorTest(TestCase):
 
         self.assertRaises(ValidationError, form_validator.validate)
         self.assertIn('reason_hospitalised', form_validator._errors)
+
+    def test_death_date_validator(self):
+
+        options = {
+            'date_of_death': datetime(2004, 9, 2).date()
+        }
+
+        form_validator = DeathReportValidator(cleaned_data=options)
+
+        self.assertRaises(ValidationError, form_validator.validate)
+        self.assertIn('date_of_death', form_validator._errors)
