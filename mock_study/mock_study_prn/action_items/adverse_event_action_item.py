@@ -1,5 +1,5 @@
 from django.apps import apps
-from edc_action_item import Action, site_action_items
+from edc_action_item import Action
 from django.core.exceptions import ObjectDoesNotExist
 from .death_report_action_item import DeathReportAction
 

@@ -1,4 +1,4 @@
-from edc_action_item import Action, site_action_items
+from edc_action_item import Action
 
 COMPLIANCE_ACTION_ITEM_NAME = 'compliance'
 
