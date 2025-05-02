@@ -9,6 +9,3 @@ class ComplianceAction(Action):
     reference_model = 'mock_study_prn.complaincereport'
     singleton = True
     display_name = 'Compliance Report'
-
-
-site_action_items.register(ComplianceAction)

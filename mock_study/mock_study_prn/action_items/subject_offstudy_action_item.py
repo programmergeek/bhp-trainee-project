@@ -9,6 +9,3 @@ class SubjectOffStudyAction(Action):
     display_name = 'Subject Off Study'
     reference_model = 'mock_study_prn.subjectoffstudy'
     singleton = True
-
-
-site_action_items.register(SubjectOffStudyAction)

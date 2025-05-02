@@ -26,6 +26,3 @@ class DeathReportAction(Action):
             pass
 
         return next_actions
-
-
-site_action_items.register(DeathReportAction)

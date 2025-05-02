@@ -9,6 +9,3 @@ class FinalQuestionnaireAction(Action):
     display_name = 'Finale Questionnaire'
     reference_model = 'mock_study_prn.finalquestionnaire'
     singleton = True
-
-
-site_action_items.register(FinalQuestionnaireAction)

@@ -1,0 +1,13 @@
+from edc_action_item import site_action_items
+from .adverse_event_action_item import AdverseEventAction
+from .complaince_action_item import ComplianceAction
+from .death_report_action_item import DeathReportAction
+from .final_questionnaire_action_item import FinalQuestionnaireAction
+from .subject_offstudy_action_item import SubjectOffStudyAction
+
+
+site_action_items.register(AdverseEventAction)
+site_action_items.register(ComplianceAction)
+site_action_items.register(DeathReportAction)
+site_action_items.register(FinalQuestionnaireAction)
+site_action_items.register(SubjectOffStudyAction)
