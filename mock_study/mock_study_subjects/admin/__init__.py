@@ -11,3 +11,4 @@ from .compliance_admin import ComplianceAdmin
 from .exit_interview_admin import ExitInterviewAdmin
 from .final_questionnaire_admin import FinalQuestionnaireAdmin
 from .appointment_admin import AppointmentAdmin
+from .drug_administration_admin import DrugAdministrationAdmin
