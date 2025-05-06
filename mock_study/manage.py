@@ -6,7 +6,7 @@ import sys
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                          'mock_study_subjects.settings')
+                          'mock_study.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

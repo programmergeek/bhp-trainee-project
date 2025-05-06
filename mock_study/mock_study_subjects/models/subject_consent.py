@@ -82,6 +82,9 @@ class SubjectConsent(ConsentModelMixin,
     def natural_key(self):
         return (self.subject_identifier, self.version,)
 
+    def schedule_name(self):
+        return 'mock_study_schedule'
+
     class Meta(ConsentModelMixin.Meta):
         app_label = 'mock_study_subjects'
         get_latest_by = 'consent_datetime'
