@@ -14,6 +14,7 @@ class SubjectLocatorAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'subject_identifier',
                 'date_signed',
             )}),
         subject_contacts_fieldset,

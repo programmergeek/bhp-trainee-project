@@ -43,8 +43,6 @@ class SubjectScreeningAdmin(ModelAdminFormInstructionsMixin, admin.ModelAdmin):
 
     radio_fields = {
         'has_hypertension': admin.VERTICAL,
-        'is_pregnant': admin.VERTICAL,
-        'is_breastfeeding': admin.VERTICAL,
         'enrollment_site': admin.VERTICAL,
         'gender': admin.VERTICAL,
         'has_allergies_to_drug': admin.VERTICAL,

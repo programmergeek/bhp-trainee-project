@@ -8,7 +8,7 @@ from edc_constants.constants import MALE, FEMALE
 subject_consent_version_1 = Consent(
     'mock_study_subjects.subjectconsent',
     version='1',
-    start=arrow.get(datetime(2026, 4, 30)).datetime,
+    start=arrow.get(datetime(2024, 4, 30)).datetime,
     end=arrow.get(datetime(2028, 4, 3)).datetime,
     age_min=30,
     age_max=65,

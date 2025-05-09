@@ -4,7 +4,7 @@ from django.utils import timezone
 from edc_base.model_mixins import BaseModel
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.model_managers import HistoricalRecords
-from edc_constants.choices import GENDER, YES_NO
+from edc_constants.choices import GENDER, YES_NO, YES_NO_NA
 from edc_constants.constants import MALE, NO
 
 
@@ -58,17 +58,17 @@ class SubjectScreening(
     )
 
     is_pregnant = models.CharField(
-        max_length=3,
-        choices=YES_NO,
+        max_length=20,
+        choices=YES_NO_NA,
         verbose_name="Are they currently pregnant?",
-        help_text="If 'Yes', then stop. The patient cannot be part of this study. ",
+        help_text="If 'Yes', then stop. The patient cannot be part of this study. Select 'Not applicable' for male participants.",
     )
 
     is_breastfeeding = models.CharField(
-        max_length=3,
-        choices=YES_NO,
+        max_length=20,
+        choices=YES_NO_NA,
         verbose_name="Is the patient currently breastfeeding?",
-        help_text="If 'Yes', then stop. The patient cannot be part of this study.",
+        help_text="If 'Yes', then stop. The patient cannot be part of this study. Select 'Not applicable' for male participants.",
     )
 
     has_allergies_to_drug = models.CharField(

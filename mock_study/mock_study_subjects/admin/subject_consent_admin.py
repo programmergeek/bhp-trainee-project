@@ -4,15 +4,8 @@ from ..forms.subject_consent_form import SubjectConsentForm
 from ..models.subject_consent import SubjectConsent
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_model_admin import (
-    audit_fieldset_tuple, ModelAdminNextUrlRedirectMixin
+    audit_fieldset_tuple
 )
-
-
-class ModelAdminMixin(
-        ModelAdminNextUrlRedirectMixin
-):
-
-    pass
 
 
 @admin.register(SubjectConsent, site=mock_study_admin)
@@ -67,5 +60,3 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, admin.ModelAdmin):
     }
 
     search_fields = ('subject_identifier', 'identity')
-
-    readonly_fields = ('screening_identifier',)

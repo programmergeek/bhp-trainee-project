@@ -9,6 +9,8 @@ from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
+from .appointment import Appointment
+
 
 class SubjectVisit(
         VisitModelMixin,
@@ -16,7 +18,7 @@ class SubjectVisit(
         SiteModelMixin,
         BaseModel):
 
-    appointment = models.CharField(max_length=10)
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT)
 
     reason = models.CharField(
         verbose_name='What is the reason for this visit report?',

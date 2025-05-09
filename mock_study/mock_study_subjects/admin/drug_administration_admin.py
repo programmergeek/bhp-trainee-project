@@ -12,7 +12,6 @@ class DrugAdministrationAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {
         'fields': [
-            'subject_identifier',
             'drug_taken',
             'comment'
         ]
