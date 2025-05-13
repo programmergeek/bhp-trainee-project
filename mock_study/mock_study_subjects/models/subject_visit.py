@@ -8,6 +8,7 @@ from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
+from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 
 from .appointment import Appointment
 
@@ -15,6 +16,7 @@ from .appointment import Appointment
 class SubjectVisit(
         VisitModelMixin,
         RequiresConsentFieldsModelMixin,
+        CreatesMetadataModelMixin,
         SiteModelMixin,
         BaseModel):
 

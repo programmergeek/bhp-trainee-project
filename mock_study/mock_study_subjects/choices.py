@@ -59,3 +59,33 @@ GENDER = (
     (MALE, _('Male')),
     (FEMALE, _('Female')),
 )
+
+MARITAL_STATUS = (
+    ('single', 'Single'),
+    ('married', 'Married'),
+    ('divorced', 'Divorced'),
+    ('widowed', 'Widowed'),
+    (OTHER, 'Other')
+)
+
+RACE = (
+    ('black', 'Black'),
+    ('white', 'White'),
+    ('asian', 'Asian'),
+    ('hispanic', 'Hispanic'),
+    (OTHER, 'Other'),
+)
+
+EDUCATION = (
+    ('psle', 'PSLE'),
+    ('jse', 'CJSE'),
+    ('bgcse', 'BGCSE'),
+    ('igcse', 'IGCSE'),
+    ('undergraduate', 'Undergraduate'),
+    ('masters', 'Masters'),
+    ('phd', 'PHD'),
+    (OTHER, 'Other'),
+)
+
+RATING_SCALE = (('strongly_agree', 'Stongly Agree'), ('agree', 'Agree'), ('neutral',
+                'Neutral'), ('disagree', 'Disagree'), ('strongly_disagree', 'Strongly Disagree'))
