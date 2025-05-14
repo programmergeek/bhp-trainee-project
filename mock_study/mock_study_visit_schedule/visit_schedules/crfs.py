@@ -35,8 +35,6 @@ crfs.update({'V2': visit2_crfs})
 
 visit3_crfs = FormsCollection(
     Crf(show_order=1, model='mock_study_subjects.subjectvitals'),
-    Crf(show_order=2, model='mock_study_subjects.drugadministration'),
-    Crf(show_order=3, model='mock_study_subjects.drugresponse'),
     name='visit 3'
 )
 crfs.update({'V3': visit3_crfs})
