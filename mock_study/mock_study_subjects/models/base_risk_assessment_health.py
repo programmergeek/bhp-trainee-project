@@ -9,7 +9,7 @@ class BaseRiskAssessmentHealth(CrfModelMixin):
 
     reason_for_medication = models.TextField(verbose_name='If you are, what is meant to treat?', blank=True, null=True)
 
-    side_effects = models.CharField(max_length=3, blank=True, null=True, verbose_name='Does the medication have increased blood pressure as a side effect?')
+    side_effects = models.CharField(max_length=3, blank=True, null=True, choices=YES_NO, verbose_name='Does the medication have increased blood pressure as a side effect?')
 
     heart_attack = models.CharField(max_length=3, verbose_name="Have you ever had a heart attack?", choices=YES_NO)
 
