@@ -6,11 +6,9 @@ from .mixins.crfs_model_mixin import CrfModelMixin
 
 class BaseRiskAssessmentCaffeine(CrfModelMixin):
     
-    consumes_caffeine = models.CharField(max_length=3, choices=YES_NO, verbose_name='Do you regularlly drink caffinated drinks, e.g tea, coffee, energy drinks, etc.')
+    drinks_per_week = models.IntegerField(verbose_name='How many days per week do you have a cafinated drink?', validators=[MinValueValidator(1), MaxValueValidator(7)])
 
-    drinks_per_week = models.IntegerField(blank=True, null=True, verbose_name='How many days per week do you have a cafinated drink?', validators=[MinValueValidator(1), MaxValueValidator(7)])
-
-    amount_of_drinks = models.IntegerField(blank=True, null=True, verbose_name='How many drinks do you have on the days you do have cafinated drinks', validators=[MinValueValidator(1), MaxValueValidator(30)])
+    amount_of_drinks = models.IntegerField(verbose_name='How many drinks do you have on the days you do have cafinated drinks', validators=[MinValueValidator(1), MaxValueValidator(30)])
 
     class Meta(CrfModelMixin.Meta):
         app_label = 'mock_study_subjects'

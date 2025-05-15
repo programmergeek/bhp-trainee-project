@@ -8,11 +8,9 @@ from .mixins.crfs_model_mixin import CrfModelMixin
 
 class BaseRiskAssessmentAlcohol(CrfModelMixin):
 
-    consumes_alcohol = models.CharField(max_length=3, choices=YES_NO , verbose_name='Do you drink alcohol?')
+    drinks_per_week = models.IntegerField(verbose_name='How many days per week do you consume alcohol?', validators=[MinValueValidator(1), MaxValueValidator(7)])
 
-    drinks_per_week = models.IntegerField(verbose_name='How many days per week do you consume alcohol?', validators=[MinValueValidator(1), MaxValueValidator(7)], blank=True, null=True)
-
-    amount_of_drinks = models.IntegerField(verbose_name='When you do drink, how many drinks do you normally have?', validators=[MinValueValidator(1), MaxValueValidator(30)], blank=True, null=True)
+    amount_of_drinks = models.IntegerField(verbose_name='When you do drink, how many drinks do you normally have?', validators=[MinValueValidator(1), MaxValueValidator(30)])
 
     class Meta(CrfModelMixin.Meta):
         app_label = 'mock_study_subjects'

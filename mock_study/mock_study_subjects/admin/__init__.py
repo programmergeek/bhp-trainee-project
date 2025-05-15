@@ -24,3 +24,4 @@ from .base_risk_assessment_stress_admin import BaseRiskAssessmentStressAdmin
 from .base_risk_assessment_sleep_admin import BaseRiskAssessmentSleepAdmin
 from .response_to_drug_admin import DrugResponseAdmin
 from .symptoms_admin import SymptomsAdmin
+from .base_risk_assessment_admin import BaseRiskAssessmentAdmin

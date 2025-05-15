@@ -4,15 +4,16 @@ crfs = {}
 
 visit0_crfs = FormsCollection(
     Crf(show_order=1, model='mock_study_subjects.symptome'),
-    Crf(show_order=2, model='mock_study_subjects.baseriskassessmentalcohol'),
-    Crf(show_order=3, model='mock_study_subjects.baseriskassessmentphysicalactivity'),
-    Crf(show_order=4, model='mock_study_subjects.baseriskassessmentdiet'),
-    Crf(show_order=5, model='mock_study_subjects.baseriskassessmentfamily'),
-    Crf(show_order=6, model='mock_study_subjects.baseriskassessmentdemographics'),
-    Crf(show_order=7, model='mock_study_subjects.baseriskassessmenthealth'),
-    Crf(show_order=8, model='mock_study_subjects.baseriskassessmentcaffeine'),
-    Crf(show_order=9, model='mock_study_subjects.baseriskassessmentsleep'),
-    Crf(show_order=10, model='mock_study_subjects.baseriskassessmentstress'),
+    Crf(show_order=2, model='mock_study_subjects.baseriskassessment'),
+    Crf(show_order=3, model='mock_study_subjects.baseriskassessmentalcohol'),
+    Crf(show_order=4, model='mock_study_subjects.baseriskassessmentphysicalactivity'),
+    Crf(show_order=5, model='mock_study_subjects.baseriskassessmentdiet'),
+    Crf(show_order=6, model='mock_study_subjects.baseriskassessmentfamily'),
+    Crf(show_order=7, model='mock_study_subjects.baseriskassessmentdemographics'),
+    Crf(show_order=8, model='mock_study_subjects.baseriskassessmenthealth'),
+    Crf(show_order=9, model='mock_study_subjects.baseriskassessmentcaffeine'),
+    Crf(show_order=10, model='mock_study_subjects.baseriskassessmentsleep'),
+    Crf(show_order=11, model='mock_study_subjects.baseriskassessmentstress'),
     name='screening'
 )
 crfs.update({'V0': visit0_crfs})
