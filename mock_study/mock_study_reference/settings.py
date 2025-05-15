@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mock_study_reference.apps.AppConfig',
+    'mock_study_visit_schedule.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
