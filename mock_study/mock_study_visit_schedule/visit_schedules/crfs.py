@@ -3,7 +3,7 @@ from edc_visit_schedule import FormsCollection, Crf
 crfs = {}
 
 visit0_crfs = FormsCollection(
-    Crf(show_order=1, model='mock_study_subjects.symptome'),
+    Crf(show_order=1, model='mock_study_subjects.symptoms'),
     Crf(show_order=2, model='mock_study_subjects.baseriskassessment'),
     Crf(show_order=3, model='mock_study_subjects.baseriskassessmentalcohol'),
     Crf(show_order=4, model='mock_study_subjects.baseriskassessmentphysicalactivity'),
@@ -22,6 +22,7 @@ visit1_crfs = FormsCollection(
     Crf(show_order=1, model='mock_study_subjects.subjectvitals'),
     Crf(show_order=2, model='mock_study_subjects.drugadministration'),
     Crf(show_order=3, model='mock_study_subjects.drugresponse'),
+    Crf(show_order=4, model='mock_study_subjects.symptoms'),
     name='visit 1'
 )
 crfs.update({'V1': visit1_crfs})
@@ -30,12 +31,14 @@ visit2_crfs = FormsCollection(
     Crf(show_order=1, model='mock_study_subjects.subjectvitals'),
     Crf(show_order=2, model='mock_study_subjects.drugadministration'),
     Crf(show_order=3, model='mock_study_subjects.drugresponse'),
+    Crf(show_order=4, model='mock_study_subjects.symptoms'),
     name='visit 2'
 )
 crfs.update({'V2': visit2_crfs})
 
 visit3_crfs = FormsCollection(
     Crf(show_order=1, model='mock_study_subjects.subjectvitals'),
+    Crf(show_order=2, model='mock_study_subjects.symptoms'),
     name='visit 3'
 )
 crfs.update({'V3': visit3_crfs})

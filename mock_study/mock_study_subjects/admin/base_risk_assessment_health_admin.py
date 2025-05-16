@@ -11,13 +11,10 @@ class BaseRiskAssessmentHealthAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {
         'fields': [
-            'medication',
-            'reason_for_medication',
-            'side_effects',
-            'heart_attack',
-            'aneurysm',
-            'stroke',
-            'kidney_disease',
+           'preexisting_condition_name',
+            'preexisting_condition_symptom',
+            'preexisting_condition_treatment',
+            'preexisting_condition_treatment_side_effects',
             'report_datetime',
         ]
     }),)

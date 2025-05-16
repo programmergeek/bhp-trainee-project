@@ -1,24 +1,19 @@
 from django.db import models
-from edc_constants.choices import YES_NO
+from edc_constants.choices import YES_NO, YES_NO_DONT_KNOW
 
 from .mixins.crfs_model_mixin import CrfModelMixin
 
 class BaseRiskAssessmentHealth(CrfModelMixin):
 
-    medication = models.CharField(max_length=3, choices=YES_NO, verbose_name="Are you currently using any prescribed medication?")
+    preexisting_condition_name = models.CharField(max_length=100, verbose_name="What is the name of your condition?")
 
-    reason_for_medication = models.TextField(verbose_name='If you are, what is meant to treat?', blank=True, null=True)
+    preexisting_condition_symptom = models.CharField(max_length=3, verbose_name='Is high blood pressure a symptom for this condition?')
 
-    side_effects = models.CharField(max_length=3, blank=True, null=True, choices=YES_NO, verbose_name='Does the medication have increased blood pressure as a side effect?')
+    preexisting_condition_treatment = models.CharField(max_length=3, verbose_name='If yes, are you receiving any treatment for this condition?', choices=YES_NO)
 
-    heart_attack = models.CharField(max_length=3, verbose_name="Have you ever had a heart attack?", choices=YES_NO)
+    preexisting_condition_treatment_side_effects = models.CharField(max_length=20, verbose_name='Does this treatment list elevated/high blood pressure as a side effect?', choices=YES_NO_DONT_KNOW, blank=True, null=True)
 
-    aneurysm = models.CharField(max_length=3, verbose_name='Have you ever had an aneurysm?', choices=YES_NO)
-
-    stroke = models.CharField(max_length=3, verbose_name="Have you ever had a stroke?", choices=YES_NO)
-
-    kidney_disease = models.CharField(max_length=3, verbose_name='Have you ever had kidney disease?', choices=YES_NO)
-
+    
     class Meta(CrfModelMixin.Meta):
         app_label = 'mock_study_subjects'
         verbose_name = 'Base Risk Assessment: Health'

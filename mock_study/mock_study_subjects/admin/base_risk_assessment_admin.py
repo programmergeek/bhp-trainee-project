@@ -12,6 +12,7 @@ class BaseRiskAssessmentAdmin(admin.ModelAdmin):
     fieldsets = ((None, {
         'fields': [
             'drinks_alcohol',
-            'drinks_caffeine'
+            'drinks_caffeine',
+            'preexisting_condition'
         ]
     }),)
