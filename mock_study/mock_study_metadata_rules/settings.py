@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mock_study_metadata_rules.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
